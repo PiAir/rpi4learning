@@ -1,0 +1,110 @@
+version: '2'
+services:
+
+    mongo:
+        image: mongo:4.4.5
+        restart: unless-stopped
+        volumes:
+            - "${DATA_LOCATION}/mongo:/data/db"
+        networks:
+          - rpi4learning             
+
+    redis:
+        image: redis:4-alpine
+        restart: unless-stopped
+        networks:
+          - rpi4learning         
+
+    xapi:
+        image: learninglocker/xapi-service:4.0.1
+        restart: unless-stopped
+        environment:
+            - MONGO_URL=mongodb://mongo:27017/learninglocker_v2
+            - MONGO_DB=learninglocker_v2
+            - REDIS_URL=redis://redis:6379/0
+        depends_on:
+            - mongo
+            - redis
+        networks:
+          - rpi4learning             
+        volumes:
+            - "${DATA_LOCATION}/xapi-storage:/usr/src/app/storage"
+
+    api:
+        image: rpi4learningbox/learninglocker2-app:latest
+        environment:
+            - DOMAIN_NAME
+            - APP_SECRET
+            - SMTP_HOST
+            - SMTP_PORT
+            - SMTP_SECURED
+            - SMTP_USER
+            - SMTP_PASS
+        command: "node api/dist/server"
+        restart: unless-stopped
+        depends_on:
+            - mongo
+            - redis
+        networks:
+          - rpi4learning             
+        volumes:
+            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
+
+    ui:
+        image: rpi4learningbox/learninglocker2-app:latest
+        environment:
+            - DOMAIN_NAME
+            - APP_SECRET
+            - SMTP_HOST
+            - SMTP_PORT
+            - SMTP_SECURED
+            - SMTP_USER
+            - SMTP_PASS
+        command: "./entrypoint-ui.sh"
+        restart: unless-stopped
+        depends_on:
+            - mongo
+            - redis
+            - api
+        networks:
+          - rpi4learning             
+        volumes:
+            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
+            - "${DATA_LOCATION}/ui-logs:/opt/learninglocker/logs"
+
+    worker:
+        image: rpi4learningbox/learninglocker2-app:latest
+        environment:
+            - DOMAIN_NAME
+            - APP_SECRET
+            - SMTP_HOST
+            - SMTP_PORT
+            - SMTP_SECURED
+            - SMTP_USER
+            - SMTP_PASS
+        command: "node worker/dist/server"
+        restart: unless-stopped
+        depends_on:
+            - mongo
+            - redis
+        networks:
+          - rpi4learning             
+        volumes:
+            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
+
+    nginx:
+        image: rpi4learningbox/learninglocker2-nginx:latest
+        environment:
+            - DOMAIN_NAME
+        restart: unless-stopped
+        depends_on:
+            - ui
+            - xapi
+        ports:
+            - "443:443"
+            - "80:80"
+        networks:
+          - rpi4learning            
+
+networks:
+     rpi4learning:

@@ -1,0 +1,22 @@
+version: '2'
+services:
+  moodle:
+    image: rpi4learningbox/moodle:latest
+    container_name: moodle
+    ports:
+      - "81:80"
+    networks:
+      - rpi4learning
+    environment:
+    - MOODLE_URL=192.168.0.72
+    - MOODLE_DB_URL=mariadb
+    - MOODLE_DB_NAME=moodle-db
+    - MOODLE_DB_USER=moodle
+    - MOODLE_DB_PASS=YVNex3CHq4yc2DzHYVNex3CHq4yc2DzH
+    - MOODLE_DB_PORT=3306
+    - MOODLE_MAX_BODY_SIZE=200M
+    - MOODLE_BODY_TIMEOUT=300s
+    - MOODLE_UPLOAD_MAX_FILESIZE=200M  
+        
+networks:
+     rpi4learning:

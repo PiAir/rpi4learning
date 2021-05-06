@@ -1,0 +1,1 @@
+docker run -d -p 445:445 --restart=always --network=rpi4learning -v /home/pi/docker:/share/data --name samba trnape/rpi-samba -u "rpisamba:Hmk7hsrW9Q8W5hYr" -s "Docker directory:/share/data:rw:rpisamba"

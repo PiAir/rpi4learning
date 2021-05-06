@@ -1,0 +1,2 @@
+docker run -td --name=xerte -p 8041:80 --network=rpi4learning -v $PWD/database.php:/var/www/html/xerteonlinetoolkits/database.php -v $PWD/tsugi/config.php:/var/www/html/xerteonlinetoolkits/tsugi/config.php -v $PWD/php.ini:/usr/local/etc/php/php.ini -v $PWD/USER-FILES:/var/www/html/xerteonlinetoolkits/USER-FILES rpi4learningbox/xerte:latest
+docker exec xerte rm -r /var/www/html/xerteonlinetoolkits/setup
