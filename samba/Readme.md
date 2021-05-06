@@ -33,6 +33,4 @@ You will be prompted for the Username and Password that you've set previously.
 
 Rpi-Samba on Dockerhub: https://hub.docker.com/r/trnape/rpi-samba/
 
-Note: on the RPI4 Debian image, the memory use is not shown. There should be a work-around, just haven't tested it yet.
-
 Note: you get a warning about a platform mismatch (linux/arm versus linux/arm64/v8). You can ignore that, the image works fine.
