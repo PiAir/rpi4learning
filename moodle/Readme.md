@@ -52,14 +52,25 @@ The first time you will be redirected to /admin/index.php
 ```
 - Read the conditions and accept them by clicking on the Continue button
 - On the next page, scroll down and again click on the Continue button
-- 
+- Wait a while...installing the tables in the database takes a long time.
+- Create a user:
+    - Username: e.g. admin-moodle
+    - New Password: create one using https://passwordsgenerator.net/
+    - Firstname: [your choice] 
+    - Surname: [your choice]
+    - Email address: yourmail@gmail.com - make sure this is correct if you want to be able to reset password!  
+- Click Update Profile - wait
+- On New settings - Front page settings add:
+    - Full site name: Rpi4Learning
+    - Short name for site (eg single word): Rpi4L   
+    - No-reply address: noreply@gmail.com
+- Click Save Changes - wait
+   
 ```
+Done, for now.
 
+_Needs info about using LTI to add Xerte content_
 
-_Need more info_
-
-
-Done (for now, LTI, xAPI are still to come).
 
 ## More info
 
