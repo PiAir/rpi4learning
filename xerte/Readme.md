@@ -3,7 +3,7 @@
 Finally, the container that started this all (and the question "can you explain how to run Xerte on docker?"). Up to this point, you should have at least portainder, phpMyAdmin, Mariadb running. And you should know the password for the xerte user that was created when you setup Mariadb.
 
 ## Setup
-Setting up Xert on Docker requires a bit of work. There is no official Docker image for Xerte (and this is *not* an official image!).
+Setting up Xerte on Docker requires a bit of work and mostly involves you waiting (or doing other stuff because docker is doing all the hard work). There is no official Docker image for Xerte (and this is *not* an official image!).
 I choose to include the [tsugi framework](https://www.tsugi.org/) so that we can link Xerte learning resources to any LMS that has support for LTI (the Learning Tools Interoperability framework).
 and to build the image using the Xerte github source code. 
 That means a bit more time when creating the image, but also the option to rebuild the image when a new version of Xerte is released.
