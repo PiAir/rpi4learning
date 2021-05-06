@@ -3,7 +3,7 @@
 Learning Locker is an open source Learning Record store that also offers commercial licenses and support options.
 For our goals we'll be using the open source version.
 I started using this docker version by [up2university](https://github.com/up2university/learninglocker2), kudus to them for providing that!
-But since then new versions of the source code and the different components have been release and eventually the build process failed to complete. So I changed some things based on the fixes provided online.
+But since then new versions of the source code and the different components have been release and eventually the build process failed to complete. So I changed some things based on the fixes provided online. I kept the docker tags for the parts originally provided by up2university in place (instead of renaming them) even though I'm not completely sure how close the code still is.
 
 Getting Learning Locker to work is a multi-step process, and like with Xerte, it starts with a build.
 
@@ -42,7 +42,8 @@ Once you've checked the different versions, it is time to build the app and ngin
 ```
 $ ./build.sh
 ```
-And go get a cup of tea. The app-building part took about 26 minutes alone.
+And go get a cup of tea. The app-building part takes a really long time.
+
 Note: there will be some warnings during the building of the app with regard to incorrect peer dependencies. I don't know how to fix them, but the appear to be related to the application code, not the Docker image creation process itself.
 
 ## Run the services
@@ -50,14 +51,23 @@ To run the services we use docker-compose. Type:
 ```
 docker-compose up -d
 ```
-Open the site and accept non-trusted SSL/TLS certs (see below for trusted certs).
 
 ## Create a user and organisation
-To create a new user and organisation for the site:
+To be able to logon to Learng Locker we need to create a new user and organisation for the site. The command structure is as follows:
 
 ```
-docker-compose exec api node cli/dist/server createSiteAdmin [email] [organisation] [password]
+$ docker-compose exec api node cli/dist/server createSiteAdmin [email] [organisation] [password]
+e.g.
+$ docker-compose exec api node cli/dist/server createSiteAdmin mymail@gmail.com Rpi4learning Ap28ueW6
 ```
+The password needs to be at least 8 characters and needs to contain at least one number.
+
+## Connect to the site
+
+The script tells the container to listen to port 2443. 
+
+Open **https**://[your-rpi4-ip]:**2443** in the browser. You should see the logon page. Use the username and password that you used in the previous set.
+
 
 ## TODO
 
