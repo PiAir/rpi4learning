@@ -1,4 +1,4 @@
-## MariaDb
+# MariaDb
 
 This container runs the MariaDB databaseserver. It is used by Xerte and by Moodle to store data.
 
