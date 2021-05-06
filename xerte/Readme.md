@@ -50,4 +50,3 @@ Xerte on github: https://github.com/thexerteproject/xerteonlinetoolkits
 
 Tsugi on github: https://github.com/tsugiproject/tsugi
 
-Note: you get a warning about a platform mismatch (linux/arm versus linux/arm64/v8). You can ignore that, the image works fine.
