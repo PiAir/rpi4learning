@@ -16,7 +16,7 @@ $xerte_toolkits_site->database_type = 'mysql';
 /*
  * Host where database is
  */
-$xerte_toolkits_site->database_host = '';
+$xerte_toolkits_site->database_host = 'mariadb';
 
 /*
  * Username for database
@@ -26,7 +26,7 @@ $xerte_toolkits_site->database_username = 'xerte';
 /*
  * Password for database
  */
-$xerte_toolkits_site->database_password = '';
+$xerte_toolkits_site->database_password = 'AYUaFW5zhQvNzHHcv2q67gzfmMtvmpAD';
 
 /*
  * Database name

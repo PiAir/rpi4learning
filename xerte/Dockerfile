@@ -1,4 +1,6 @@
 FROM php:7.4-apache
+ENV XERTE_VERSION 3.9
+ENV TSUGI_VERSION 21.04.24
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/xerteonlinetoolkits
 ENV XERTE https://github.com/thexerteproject/xerteonlinetoolkits/archive/refs/tags/v${XERTE_VERSION}.tar.gz
