@@ -3,28 +3,19 @@ services:
 
     mongo:
         image: mongo:4.4.5
-        container_name: learninglocker_mongo
         restart: unless-stopped
         volumes:
             - "${DATA_LOCATION}/mongo:/data/db"
         ports:
             - "27017:27017"
-        networks:
-          - rpi4learning  
 
     redis:
         image: redis:4-alpine
-        container_name: learninglocker_redis
         restart: unless-stopped
-        networks:
-          - rpi4learning  
 
     xapi:
         image: learninglocker/xapi-service:4.0.1
-        container_name: learninglocker_xapi
         restart: unless-stopped
-        networks:
-          - rpi4learning  
         environment:
             - MONGO_URL=mongodb://mongo:27017/learninglocker_v2
             - MONGO_DB=learninglocker_v2
@@ -37,7 +28,6 @@ services:
 
     api:
         image: up2university/learninglocker2-app:${DOCKER_TAG}
-        container_name: learninglocker_api
         environment:
             - DOMAIN_NAME
             - APP_SECRET
@@ -48,8 +38,6 @@ services:
             - SMTP_PASS
         command: "node api/dist/server"
         restart: unless-stopped
-        networks:
-          - rpi4learning  
         depends_on:
             - mongo
             - redis
@@ -58,7 +46,6 @@ services:
 
     ui:
         image: up2university/learninglocker2-app:${DOCKER_TAG}
-        container_name: learninglocker_ui
         environment:
             - DOMAIN_NAME
             - APP_SECRET
@@ -69,8 +56,6 @@ services:
             - SMTP_PASS
         command: "./entrypoint-ui.sh"
         restart: unless-stopped
-        networks:
-          - rpi4learning  
         depends_on:
             - mongo
             - redis
@@ -81,7 +66,6 @@ services:
 
     worker:
         image: up2university/learninglocker2-app:${DOCKER_TAG}
-        container_name: learninglocker_worker
         environment:
             - DOMAIN_NAME
             - APP_SECRET
@@ -92,8 +76,6 @@ services:
             - SMTP_PASS
         command: "node worker/dist/server"
         restart: unless-stopped
-        networks:
-          - rpi4learning  
         depends_on:
             - mongo
             - redis
@@ -102,19 +84,16 @@ services:
 
     nginx:
         image: up2university/learninglocker2-nginx:${DOCKER_TAG}
-        container_name: learninglocker_nginx
         environment:
             - DOMAIN_NAME
         restart: unless-stopped
-        networks:
-          - rpi4learning  
         depends_on:
             - ui
             - xapi
         ports:
             - "2443:443"
             - "280:80"
+        volumes:
+            - "${DATA_LOCATION}/cert/fullchain.pem:/root/ssl/fullchain.pem:ro"
+            - "${DATA_LOCATION}/cert/privkey.pem:/root/ssl/privkey.pem:ro"
 
-networks:
-     rpi4learning:
-        external: true
