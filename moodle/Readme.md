@@ -27,7 +27,7 @@ Some you can probably leave unchanged, others (like the ip for your Raspberry Pi
     - MOODLE_DB_URL=mariadb
     - MOODLE_DB_NAME=moodle-db
     - MOODLE_DB_USER=moodle
-    - MOODLE_DB_PASS=**YVNex3CHq4yc2DzHYVNex3CHq4yc2DzH**
+    - MOODLE_DB_PASS=YVNex3CHq4yc2DzHYVNex3CHq4yc2DzH
     - MOODLE_DB_PORT=3306
     - MOODLE_MAX_BODY_SIZE=200M
     - MOODLE_BODY_TIMEOUT=300s
@@ -45,7 +45,7 @@ $ docker-compose up -d
 ## Setup - step 3 Setup Moodle
 
 ```
-Open a webbrowser and goto http://[your-rpi4-ip]:**81**
+Open a webbrowser and goto http://[your-rpi4-ip]:81
 ```
 The first time you will be redirected to /admin/index.php
 
