@@ -47,6 +47,14 @@ $ docker-compose up -d
 ```
 Open a webbrowser and goto http://[your-rpi4-ip]:**81**
 ```
+The first time you will be redirected to /admin/index.php
+
+```
+- Read the conditions and accept them by clicking on the Continue button
+- On the next page, scroll down and again click on the Continue button
+- 
+```
+
 
 _Need more info_
 
