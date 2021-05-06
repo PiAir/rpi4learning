@@ -71,7 +71,7 @@ sudo pip3 install docker-compose
 
 docker-compose --version
 ```
-### get the repository file
+### get the repository files
 ``
 mkdir docker
 cd docker
