@@ -1,46 +1,22 @@
-FROM debian:9
+FROM node:10.24.0-buster AS NodeBuildEnv
 
-RUN apt-get update \
-    && apt-get install -y \
-        wget \
-        procps \
-        curl \
-        git \
-        python \
-        build-essential \
-        xvfb \
-        apt-transport-https \
-        unzip \
-        gettext-base \
-        socat \
-    && wget -qO- https://deb.nodesource.com/setup_8.x | bash \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
+ENV LL_TAG=7.0.0
+ENV RELEASE=https://github.com/LearningLocker/learninglocker/archive/refs/tags/v${LL_TAG}.tar.gz
 
-RUN npm install -g yarn 
+SHELL [ "/bin/bash", "-c" ]
 
-# install LL app
-ENV LL_TAG=v7.0.0
-RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learninglocker \
-    && cd /opt/learninglocker \
-    && git checkout $LL_TAG \
-    && yarn install \
-    && yarn build-all
+WORKDIR /usr/src
 
-WORKDIR /opt/learninglocker
+RUN chown node:node -R /usr/src
 
-# make a copy of the origin storage directory that will be used in entrypoint-common.sh
-# to fill up a volume mounted here, if it's empty
-RUN cp -r storage storage.template
+USER node
 
-# service api exposes port 8080
-# service ui exposes port 3000
-# see env.template
-EXPOSE 3000 8080
-
-COPY env.template .env.template
-COPY entrypoint-common.sh entrypoint-common.sh
-COPY entrypoint-ui.sh entrypoint-ui.sh
-
-ENTRYPOINT ["./entrypoint-common.sh"]
-
+RUN curl -L -o /tmp/source.tar.gz "${RELEASE}" && \
+      tar --strip-components=1 -xvf /tmp/source.tar.gz && \
+      env \
+        CXXFLAGS="-Wno-error=cast-function-type -Wno-error=ignored-qualifiers -Wno-error=stringop-truncation" \
+        npm_config_build_from_source="true" \
+        yarn --ignore-engines --frozen-lockfile install && \
+      touch .env && \
+      yarn build-all && \
+      yarn cache clean

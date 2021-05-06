@@ -2,6 +2,7 @@ version: '2'
 services:
 
     mongo:
+        container_name: ll_mongo
         image: mongo:4.4.5
         restart: unless-stopped
         volumes:
@@ -10,12 +11,14 @@ services:
           - rpi4learning             
 
     redis:
+        container_name: ll_redis
         image: redis:4-alpine
         restart: unless-stopped
         networks:
           - rpi4learning         
 
     xapi:
+        container_name: ll_xapi    
         image: learninglocker/xapi-service:4.0.1
         restart: unless-stopped
         environment:
@@ -31,6 +34,7 @@ services:
             - "${DATA_LOCATION}/xapi-storage:/usr/src/app/storage"
 
     api:
+        container_name: ll_api    
         image: rpi4learningbox/learninglocker2-app:latest
         environment:
             - DOMAIN_NAME
@@ -51,6 +55,7 @@ services:
             - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
 
     ui:
+        container_name: ll_ui    
         image: rpi4learningbox/learninglocker2-app:latest
         environment:
             - DOMAIN_NAME
@@ -73,6 +78,7 @@ services:
             - "${DATA_LOCATION}/ui-logs:/opt/learninglocker/logs"
 
     worker:
+        container_name: ll_worker    
         image: rpi4learningbox/learninglocker2-app:latest
         environment:
             - DOMAIN_NAME
@@ -93,6 +99,7 @@ services:
             - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
 
     nginx:
+        container_name: ll_nginx    
         image: rpi4learningbox/learninglocker2-nginx:latest
         environment:
             - DOMAIN_NAME
@@ -108,3 +115,4 @@ services:
 
 networks:
      rpi4learning:
+        external: true

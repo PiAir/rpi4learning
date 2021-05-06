@@ -1,5 +1,6 @@
 FROM php:7.4-apache
 
+ENV MOODLE_VERSION 3.10.3
 ADD ./start.sh /etc/apache2/start.sh
 
 RUN apt-get update -y && apt-get install -y 
