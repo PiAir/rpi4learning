@@ -1,4 +1,4 @@
-## phpMyAdmin
+# phpMyAdmin
 
 Technically you don't need this container, but it enables you to view the MariaDB database. And setup is super simple.
 
