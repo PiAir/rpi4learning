@@ -52,7 +52,6 @@ These instructions were adapted from the info on: https://devdojo.com/bobbyiliev
 
 ### docker
 ```
-
 $ curl -fsSL https://get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh
 $ sudo usermod -aG docker pi
@@ -72,7 +71,7 @@ $ sudo pip3 install docker-compose
 $ docker-compose --version
 ```
 ### get the repository files
-``
+```
 $ mkdir docker
 $ cd docker
 $ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.2.zip
