@@ -1,4 +1,6 @@
 #!/bin/sh
-docker build -t rpi4learningbox/learninglocker2-app:latest app
-docker build -t rpi4learningbox/learninglocker2-nginx:latest nginx
+set -e
 
+export DOCKER_TAG=dev
+docker build -t up2university/learninglocker2-app:$DOCKER_TAG app
+docker build -t up2university/learninglocker2-nginx:$DOCKER_TAG nginx
