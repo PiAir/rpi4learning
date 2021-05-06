@@ -70,13 +70,16 @@ sudo apt-get install -y python3 python3-pip
 sudo pip3 install docker-compose
 
 docker-compose --version
-
+```
+### get the repository file
+``
 mkdir docker
 cd docker
-mkdir mariadb
-mkdir mariadb/data
-mkdir xerte
-mkdir xerte/USER-FILES
+wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.1.zip
+unzip *.zip
+mv rpi4learning-0.1/* ./
+rm *.zip
+rm -r rpi4learning-0.1/
 ```
 
 Follow the steps desribed in the README files in the folders in this order:
