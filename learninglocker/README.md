@@ -1,4 +1,4 @@
-## Learning Locker
+# Learning Locker
 
 Learning Locker is an open source Learning Record store that also offers commercial licenses and support options.
 For our goals we'll be using the open source version.
