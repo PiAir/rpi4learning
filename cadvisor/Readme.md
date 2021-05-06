@@ -1,4 +1,4 @@
-## cAdvisor
+# cAdvisor
 
 Technically you don't need this container, but it enables you to view the resources used by the docker containers. And setup is super simple.
 
