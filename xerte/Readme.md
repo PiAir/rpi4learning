@@ -1,4 +1,4 @@
-## Xerte
+# Xerte
 
 Finally, the container that started this all (and the question "can you explain how to run Xerte on docker?"). Up to this point, you should have at least portainder, phpMyAdmin, Mariadb running. And you should know the password for the xerte user that was created when you setup Mariadb.
 
