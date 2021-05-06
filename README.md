@@ -71,6 +71,11 @@ sudo pip3 install docker-compose
 
 docker-compose --version
 ```
+### docker - create the rpi4learning network
+All containers share this bridge network. Create it first from the command-line:
+```
+docker network create -d bridge rpi4learning
+```
 ### get the repository files
 ``
 mkdir docker
