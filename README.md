@@ -48,7 +48,7 @@ Exit and reboot. Reconnect to the Pi
 
 ## Install Docker and Docker-compose
 
-Follow the instructions on: https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
+These instructions were adapted from the info on: https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
 
 ### docker
 ```
