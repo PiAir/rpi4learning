@@ -35,6 +35,8 @@ Some you can probably leave unchanged, others (like the ip for your Raspberry Pi
 ```
 If you changed the password vfor the Moodle user during the MariaDB setup, change it here also!
 
+## Setup - step 2 Run Moodle
+
 Now it is time to run Moodle using docker-compose:
 ```
 $ docker-compose up -d
