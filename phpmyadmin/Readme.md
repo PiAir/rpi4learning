@@ -12,8 +12,6 @@ The script tells the container to listen to port 8080.
 
 Open http://[your-rpi4-ip]:**8080** in the browser. You should see the logon page. Because we haven't setup MariaDB yet, you can't login yet.
 
-Next time you can simply logon and see the containers that you've added in the other steps.
-
 ## More info
 
 phpMyADmin on Dockerhub: https://hub.docker.com/r/phpmyadmin/phpmyadmin/
