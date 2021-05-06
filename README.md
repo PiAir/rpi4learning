@@ -28,7 +28,7 @@ Change the password using 'passwd'
 
 Run the config tool:
 ```
-sudo raspi-config
+$ sudo raspi-config
 ```
 
 Change the hostname to eg rpi4docker
@@ -52,43 +52,43 @@ These instructions were adapted from the info on: https://devdojo.com/bobbyiliev
 
 ### docker
 ```
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
 
-sudo usermod -aG docker pi
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+$ sudo usermod -aG docker pi
 ```
 logout and login again as user pi. Test if docker is running properly:
 ```
-docker --version
-docker run hello-world
+$ docker --version
+$ docker run hello-world
 ```
 ### docker compose
 ```
-sudo apt-get install libffi-dev libssl-dev
-sudo apt install python3-dev
-sudo apt-get install -y python3 python3-pip
-sudo pip3 install docker-compose
+$ sudo apt-get install libffi-dev libssl-dev
+$ sudo apt install python3-dev
+$ sudo apt-get install -y python3 python3-pip
+$ sudo pip3 install docker-compose
 
-docker-compose --version
-```
-### docker - create the rpi4learning network
-All containers share this bridge network. Create it first from the command-line:
-```
-docker network create -d bridge rpi4learning
+$ docker-compose --version
 ```
 ### get the repository files
 ``
-mkdir docker
-cd docker
-wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.2.zip
-unzip *.zip
-mv rpi4learning-0.2/* ./
-rm *.zip
+$ mkdir docker
+$ cd docker
+$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.2.zip
+$ unzip *.zip
+$ mv rpi4learning-0.2/* ./
+$ rm *.zip
 rm -r rpi4learning-0.2/
-find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
+$ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
 The last command makes sure that all the run-docker.sh and build.sh files in the repository have the correct execute rights.
 
+### docker - create the rpi4learning network
+All containers share this bridge network. Create it first from the command-line:
+```
+$ docker network create -d bridge rpi4learning
+```
 Follow the steps desribed in the README files in the folders in this order:
 
 - portainer
