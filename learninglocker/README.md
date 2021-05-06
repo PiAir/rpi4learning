@@ -24,7 +24,7 @@ Before you start building:
 ### Learning Locker version
 In the Dockerfile in the ./app directory you will find a line 
 ```
-ENV LL_TAG=v7.0.0
+ENV LL_TAG=7.0.0
 ```
 You can control which version of Learning Locker is installed by changing that tag. At the moment of writing this instruction, that was 7.0.0
 Despite nodejs version 10.x being rather old, I stuck to that version, reason for that was that the build process caused a lot of trouble. If you get it working with one of the newer versions, please submit a PR.
