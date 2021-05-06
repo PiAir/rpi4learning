@@ -21,7 +21,7 @@ $ nano .env
 
 Before you start building:
 
-### Learning Locker version
+### Get your versions
 In the Dockerfile in the ./app directory you will find a line 
 ```
 ENV LL_TAG=7.0.0
