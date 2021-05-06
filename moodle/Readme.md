@@ -71,6 +71,8 @@ Done, for now.
 
 _Needs info about using LTI to add Xerte content_
 
+_admin/cli/cron.php should run every minute...need cron container!_
+
 
 ## More info
 
