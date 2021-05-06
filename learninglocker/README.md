@@ -1,73 +1,72 @@
-# Learning Locker version 2 in Docker
+## Learning Locker
 
-It is a dockerized version of Learning Locker (LL) version 2 based on the installation guides at http://docs.learninglocker.net/guides-custom-installation/
+Learning Locker is an open source Learning Record store that also offers commercial licenses and support options.
+For our goals we'll be using the open source version.
+I started using this docker version by [up2university](https://github.com/up2university/learninglocker2), kudus to them for providing that!
+But since then new versions of the source code and the different components have been release and eventually the build process failed to complete. So I changed some things based on the fixes provided online.
 
-## Architecture
+Getting Learning Locker to work is a multi-step process, and like with Xerte, it starts with a build.
 
-For LL's architecture consult http://docs.learninglocker.net/overview-architecture/
+## Setup - Build
 
-This section is about the architecture coming out of this dockerization.
-
-Official images of Mongo, Redis, and xAPI service are used.
-Additionally, build creates two Docker images: nginx and app. 
-LL application services are to be run on containers based on the app image. 
-
-File docker-compose.yml describes the relation between services. 
-A base configuration consists of 7 containers that are run using the above-mentioned images 
-(LL application containers - api, ui, and worker - are run using image app).
-
-The only persistent locations are directories in $DATA_LOCATION (see below), 
-which are mounted as volumes to Mongo container and app-based containers.
-
-The origin service ui expects service api to work on localhost, 
-however in this dockerized version the both services are run in separate containers. 
-To make connections between those services work, socat process is run within ui container to forward local tcp connections to api container.
-
-## Usage
-
-To build the images:
-
+Most of the setup files provided in this repository just use passwords generated [here](https://passwordsgenerator.net/), but the .env file for Learning Locker wanted a real app-password for gmail. And I can't share mine with all of you. :-)
+Because of that, the repository contains a sample.env file with dummy data that you have to replace with your own data. Rename the sample file and edit it.
 ```
-./build.sh
+$ mv sample.env .env
+$ nano .env
 ```
+- Replace [your-rpi4-ip] with the ip of your Raspberry Pi
+- Replace yourmail@gmail.com with your gmail address
+- Replace BR8UnPH4UMEzq4qP with your gmail app-password - [see how to create one](https://support.google.com/accounts/answer/185833)
 
-To configure adjust settings in .env:
+Before you start building:
 
-* DATA_LOCATION - location on Docker host where volumes are created
-* DOMAIN_NAME - domain name as the instance is to be accessed from the world
-* APP_SECRET - LL's origin setting: Unique string used for hashing, Recommended length - 256 bits
-* SMTP_* - SMTP connection settings (for TLS config, see [here](https://nodemailer.com/smtp/#tls-options))
+### Learning Locker version
+In the Dockerfile in the ./app directory you will find a line 
+```
+ENV LL_TAG=v7.0.0
+```
+You can control which version of Learning Locker is installed by changing that tag. At the moment of writing this instruction, that was 7.0.0
+Despite nodejs version 10.x being rather old, I stuck to that version, reason for that was that the build process caused a lot of trouble. If you get it working with one of the newer versions, please submit a PR.
+Version 7.0.0 of Learning Locker requires at least Mongo 4.2. in the docker-compose.yml file you'll find that I use
+```
+image: mongo:4.4.5
+```
+In the Dockerfile in the ./nginx directory you can see that I use the 1.20.0 version of nginx:
+```
+FROM nginx:1.20.0
+```
+This also is something that can be updated over time.
 
-To run the services:
+Once you've checked the different versions, it is time to build the app and nginx images. Start the build process using:
+```
+$ ./build.sh
+```
+And go get a cup of tea, although the build process is less long than for Xerte.
+Note: there will be some warnings during the building of the app with regard to incorrect peer dependencies. I don't know how to fix them, but the appear to be related to the application code, not the Docker image creation process itself.
 
+## Run the services
+To run the services we use docker-compose. Type:
 ```
 docker-compose up -d
 ```
-
 Open the site and accept non-trusted SSL/TLS certs (see below for trusted certs).
 
+## Create a user and organisation
 To create a new user and organisation for the site:
 
 ```
 docker-compose exec api node cli/dist/server createSiteAdmin [email] [organisation] [password]
 ```
 
-### Backups
+## TODO
 
-Backup $DATA_LOCATION, i.e. the Docker volumes: Mongo's data and app's storage. 
+_Need more info here on how to setup a store and an endpoint....._
 
-## Upgrading
+## More info
+The original up2university repository: https://github.com/up2university/learninglocker2
 
-In app/Dockerfile, git tag of LL application is declared.
-In docker-compose.yml, image tag of xAPI service is declared.
-The versions (tags) in use can be easily adjusted as needed.
+Learning Locker github repository: https://github.com/LearningLocker/learninglocker
 
-After upgrading these versions, you shall usually proceed as follows:
-
-```
-docker-compose pull
-docker-compose stop xapi worker ui api nginx
-docker-compose run --rm api yarn migrate
-docker-compose up
-```
+For LL's architecture consult http://docs.learninglocker.net/overview-architecture/
 
