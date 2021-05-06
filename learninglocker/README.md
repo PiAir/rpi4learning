@@ -42,7 +42,7 @@ Once you've checked the different versions, it is time to build the app and ngin
 ```
 $ ./build.sh
 ```
-And go get a cup of tea, although the build process is less long than for Xerte.
+And go get a cup of tea.
 Note: there will be some warnings during the building of the app with regard to incorrect peer dependencies. I don't know how to fix them, but the appear to be related to the application code, not the Docker image creation process itself.
 
 ## Run the services
