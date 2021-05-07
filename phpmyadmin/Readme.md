@@ -14,6 +14,6 @@ Open http://[your-rpi4-ip]:**8080** in the browser. You should see the logon pag
 
 ## More info
 
-phpMyADmin on Dockerhub: https://hub.docker.com/r/phpmyadmin/phpmyadmin/
+phpMyAdmin on Dockerhub: https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 
 Note: if you use -e PMA_ARBITRARY=1 in the docker run command, you can connect to any database server. In our case, just being able to connect to the mariaDB container is enough.
