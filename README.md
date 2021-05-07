@@ -9,6 +9,7 @@ Note: You need a Raspberry Pi4 to do this, this won't work on any of the previou
 Goto: https://downloads.raspberrypi.org/raspios_arm64/images/
 
 Download the ZIP of the most recent version of the 64bit operating system. Currently that is:
+
 https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip
 
 Install: https://www.balena.io/etcher/
@@ -53,7 +54,9 @@ Exit and reboot. Reconnect to the Pi
 
 ## Install Docker and Docker-compose
 
-These instructions were adapted from the info on: https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
+These instructions were adapted from the info on:
+
+https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
 
 ### docker
 ```
@@ -76,7 +79,7 @@ $ sudo pip3 install docker-compose
 $ docker-compose --version
 ```
 ### get the repository files
-Note: currently the version tags are being updated quicker than this documentation. Make sure you get the latest version of the repository!
+Note: currently the version tags are being updated quicker than this documentation. Make sure you get [the latest version](https://github.com/PiAir/rpi4learning/releases) of the repository!
 ```
 $ mkdir docker
 $ cd docker
