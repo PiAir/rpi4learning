@@ -24,7 +24,12 @@ Use your router to find the ip-address and note it down
 ## Setup Raspberry Pi
 
 Connect to the pi using usernam: pi and password: raspberry
+
 Change the password using 'passwd'
+```
+$ passwd
+```
+I'll repeat this many more times, but if you're looking for strong passwords, [take a look here](https://passwordsgenerator.net/)
 
 Run the config tool:
 ```
@@ -89,12 +94,15 @@ All containers share this bridge network. Create it first from the command-line:
 ```
 $ docker network create -d bridge rpi4learning
 ```
+## Install all the other components
 Follow the steps desribed in the README files in the folders in this order:
 
-- portainer
-- phpmyadmin
-- cadvisor (optional)
-- samba (optional)
-- mariadb
-- xerte
-- learninglocker
+- [Portainer](portainer/README.md)
+- [phpMyAdmin](phpmyadmin/README.md)
+- [cAdvisor](cadvisor/README.md) (optional)
+- [samba](samba/README.md) (optional)
+- [MariaDB](mariadb/README.md)
+- [Xerte](xerte/README.md)
+- [Learning Locker](learninglocker/README.md)
+- [Moodle](moodle/README.md)
+- Redash
