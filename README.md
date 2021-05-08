@@ -9,6 +9,7 @@ Note: You need a Raspberry Pi4 to do this, this won't work on any of the previou
 Goto: https://downloads.raspberrypi.org/raspios_arm64/images/
 
 Download the ZIP of the most recent version of the 64bit operating system. Currently that is:
+
 https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip
 
 Install: https://www.balena.io/etcher/
@@ -24,7 +25,12 @@ Use your router to find the ip-address and note it down
 ## Setup Raspberry Pi
 
 Connect to the pi using usernam: pi and password: raspberry
+
 Change the password using 'passwd'
+```
+$ passwd
+```
+I'll repeat this many more times, but if you're looking for strong passwords, [take a look here](https://passwordsgenerator.net/)
 
 Run the config tool:
 ```
@@ -48,7 +54,9 @@ Exit and reboot. Reconnect to the Pi
 
 ## Install Docker and Docker-compose
 
-These instructions were adapted from the info on: https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
+These instructions were adapted from the info on:
+
+https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
 
 ### docker
 ```
@@ -71,7 +79,7 @@ $ sudo pip3 install docker-compose
 $ docker-compose --version
 ```
 ### get the repository files
-Note: currently the version tags are being updated quicker than this documentation. Make sure you get the latest version of the repository!
+Note: currently the version tags are being updated quicker than this documentation. Make sure you get [the latest version](https://github.com/PiAir/rpi4learning/releases) of the repository!
 ```
 $ mkdir docker
 $ cd docker
@@ -89,12 +97,15 @@ All containers share this bridge network. Create it first from the command-line:
 ```
 $ docker network create -d bridge rpi4learning
 ```
+## Install all the other components
 Follow the steps desribed in the README files in the folders in this order:
 
-- portainer
-- phpmyadmin
-- cadvisor (optional)
-- samba (optional)
-- mariadb
-- xerte
-- learninglocker
+- [Portainer](portainer/README.md)
+- [phpMyAdmin](phpmyadmin/README.md)
+- [cAdvisor](cadvisor/README.md) (optional)
+- [samba](samba/README.md) (optional)
+- [MariaDB](mariadb/README.md)
+- [Xerte](xerte/README.md)
+- [Learning Locker](learninglocker/README.md)
+- [Moodle](moodle/README.md)
+- Redash

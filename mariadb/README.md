@@ -9,13 +9,13 @@ CREATE DATABASE IF NOT EXISTS `xerte-db`
 	CHARACTER SET = 'utf8'
     COLLATE = 'utf8_unicode_ci';
 CREATE OR REPLACE USER xerte@'%' IDENTIFIED BY 'AYUaFW5zhQvNzHHcv2q67gzfmMtvmpAD';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, CREATE TEMPORARY TABLES, CREATE VIEW, EVENT, TRIGGER, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EXECUTE ON `xerte-db`.* TO 'xerte'@'%';    
+GRANT ALL PRIVILEGES ON `xerte-db`.* TO 'xerte'@'%' WITH GRANT OPTION;      
     
 CREATE DATABASE IF NOT EXISTS `moodle-db`
 	CHARACTER SET = 'utf8'
     COLLATE = 'utf8_unicode_ci';    
 CREATE OR REPLACE USER moodle@'%' IDENTIFIED BY 'YVNex3CHq4yc2DzHYVNex3CHq4yc2DzH';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, CREATE TEMPORARY TABLES, CREATE VIEW, EVENT, TRIGGER, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EXECUTE ON `moodle-db`.* TO 'moodle'@'%';
+GRANT ALL PRIVILEGES ON `moodle-db`.* TO 'moodle'@'%' WITH GRANT OPTION;
 ```
 The statements create 2 databases (xerte-db and moodle-db) and 2 users (xerte and moodle).
 Take a note of the "IDENTIFIED BY" parts. These contain the passwords for those users. You can replace them with your own strong password, but you'll have to note them down for when you're installing Xerte and/or Moodle.
