@@ -96,9 +96,9 @@ $xerte_toolkits_site->database_password = 'AYUaFW5zhQvNzHHcv2q67gzfmMtvmpAD';
 Change that (if needed) to the password for the xerte-user created during the setup of Mariadb.
 Save the changes.
 
-Now it is time to run the production version of the Xerte container and finish the setup:
+Now it is time to run the production version of the Xerte container and finish the setup. We'll use docker-compose now:
 ```
-$ ./run-docker.sh
+$ docker-compose up -d
 ```
 This script will also remove the setup-files from the installation, adding a bit more security.
 
