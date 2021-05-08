@@ -29,15 +29,24 @@ By default cAdvisor won't display memory usage. By following the instructions fo
 The steps to fix:
 ```
 $ sudo nano /boot/cmdline.txt
-- add this to the end of the line: cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
+```
+- add this to the end of the line: 
+```
+cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
+```
 - save and close
+```
 $ sudo nano /etc/docker/daemon.json
+```
 - add this to the file (keep the spacing):
+```
 {
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
+```
 - save and close
 - reboot the RPi4:
+```
 $ sudo reboot now
 ```
 If the Raspberry Pi has finished rebooting, you should see the memory used.
