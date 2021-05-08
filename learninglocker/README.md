@@ -2,10 +2,10 @@
 
 Learning Locker is an open source Learning Record store that also offers commercial licenses and support options.
 For our goals we'll be using the open source version.
-I started using this docker version by [up2university](https://github.com/up2university/learninglocker2), kudus to them for providing that!
-But since then new versions of the source code and the different components have been release and eventually the build process failed to complete. So I changed some things based on the fixes provided online. I kept the docker tags for the parts originally provided by up2university in place (instead of renaming them) even though I'm not completely sure how close the code still is.
+I started using this docker version by [up2university](https://github.com/up2university/learninglocker2), kudos to them for providing that!
+But since then new versions of the source code and the different components have been release and eventually the build process failed to complete. So I changed some things based on the fixes provided online. I decided to rename the docker labels to reflect that change and replaced the 'dev' tags with the version numbers actually used in this build.
 
-Getting Learning Locker to work is a multi-step process, and like with Xerte, it starts with a build.
+Getting Learning Locker to work is a multi-step process, and like with some of the other images, it starts with a build.
 
 ## Setup - Build
 
@@ -18,8 +18,9 @@ $ nano .env
 - Replace [your-rpi4-ip] with the ip of your Raspberry Pi
 - Replace yourmail@gmail.com with your gmail address
 - Replace BR8UnPH4UMEzq4qP with your gmail app-password - [see how to create one](https://support.google.com/accounts/answer/185833)
+- Save the changes.
 
-Before you start building:
+Before you start building, check the versions used by the scripts.
 
 ### Get your versions
 In the Dockerfile in the ./app directory you will find a line 
