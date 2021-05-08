@@ -1,5 +1,9 @@
 FROM debian:9
 
+# Set Learning Locker version
+ENV LL_TAG=v7.0.0
+
+
 RUN apt-get update \
     && apt-get install -y \
         wget \
@@ -20,8 +24,6 @@ RUN apt-get update \
 RUN npm install -g yarn 
 
 # install LL app
-# ENV LL_TAG=v2.8.2
-ENV LL_TAG=v7.0.0
 RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learninglocker \
     && cd /opt/learninglocker \
     && git checkout $LL_TAG \

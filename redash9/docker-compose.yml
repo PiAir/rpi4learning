@@ -1,0 +1,71 @@
+version: "2"
+x-redash-service: &redash-service
+  image: rpi4learningbox/redash:9.0.0-beta.b42121
+  depends_on:
+    - postgres
+    - redis
+  env_file: ${REDASH_LOCATION}/.env
+  restart: unless-stopped
+  networks:
+    - rpi4learning    
+  volumes:
+      - ${REDASH_LOCATION}/data:/data    
+services:
+  server:
+    <<: *redash-service
+    command: server
+    container_name: redash_server    
+    ports:
+      - "5000:5000"
+    environment:
+      REDASH_WEB_WORKERS: 4
+  scheduler:
+    <<: *redash-service
+    command: scheduler
+    container_name: redash_scheduler    
+    environment:
+      QUEUES: "celery"
+      WORKERS_COUNT: 1
+  scheduled_worker:
+    <<: *redash-service
+    container_name: redash_scheduled_worker      
+    command: worker
+    environment:
+      QUEUES: "scheduled_queries,schemas"
+      WORKERS_COUNT: 1
+  adhoc_worker:
+    <<: *redash-service
+    container_name: redash_adhoc_worker    
+    command: worker
+    environment:
+      QUEUES: "queries"
+      WORKERS_COUNT: 2
+  redis:
+    image: redis:5.0-alpine
+    container_name: redash_redis    
+    restart: always
+  postgres:
+    image: postgres:9.6-alpine
+    container_name: redash_progres    
+    env_file: ${REDASH_LOCATION}/.env
+    volumes:
+      - ${REDASH_LOCATION}/postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - rpi4learning 
+  nginx:
+    image: rpi4learningbox/redash-nginx:1.20.0
+    container_name: redash_nginx    
+    ports:
+      - "8090:80"
+    depends_on:
+      - server
+    links:
+      - server:redash
+    restart: unless-stopped
+    networks:
+      - rpi4learning 
+      
+networks:
+     rpi4learning:
+        external: true      

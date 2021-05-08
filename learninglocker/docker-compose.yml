@@ -5,12 +5,12 @@ services:
         image: mongo:4.4.5
         container_name: learninglocker_mongo
         restart: unless-stopped
-        volumes:
-            - "${DATA_LOCATION}/mongo:/data/db"
-        ports:
-            - "27017:27017"
         networks:
           - rpi4learning  
+        ports:
+            - "27017:27017"
+        volumes:
+            - "${PWD}/data/mongo:/data/db"
 
     redis:
         image: redis:4-alpine
@@ -31,12 +31,12 @@ services:
             - REDIS_URL=redis://redis:6379/0
         depends_on:
             - mongo
-            - redis
+            - redis          
         volumes:
-            - "${DATA_LOCATION}/xapi-storage:/usr/src/app/storage"
+            - "${PWD}/data/xapi-storage:/usr/src/app/storage"
 
-    api:
-        image: up2university/learninglocker2-app:${DOCKER_TAG}
+    api:  
+        image: rpi4learningbox/learninglocker2-app:${LL_VERSION}
         container_name: learninglocker_api
         environment:
             - DOMAIN_NAME
@@ -52,12 +52,12 @@ services:
           - rpi4learning  
         depends_on:
             - mongo
-            - redis
+            - redis            
         volumes:
-            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
+            - "${PWD}/data/app-storage:/opt/learninglocker/storage"
 
-    ui:
-        image: up2university/learninglocker2-app:${DOCKER_TAG}
+    ui: 
+        image: rpi4learningbox/learninglocker2-app:${LL_VERSION}
         container_name: learninglocker_ui
         environment:
             - DOMAIN_NAME
@@ -74,13 +74,13 @@ services:
         depends_on:
             - mongo
             - redis
-            - api
+            - api             
         volumes:
-            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
-            - "${DATA_LOCATION}/ui-logs:/opt/learninglocker/logs"
+            - "${PWD}/data/app-storage:/opt/learninglocker/storage"
+            - "${PWD}/data/ui-logs:/opt/learninglocker/logs"
 
-    worker:
-        image: up2university/learninglocker2-app:${DOCKER_TAG}
+    worker:  
+        image: rpi4learningbox/learninglocker2-app:${LL_VERSION}
         container_name: learninglocker_worker
         environment:
             - DOMAIN_NAME
@@ -96,12 +96,12 @@ services:
           - rpi4learning  
         depends_on:
             - mongo
-            - redis
+            - redis           
         volumes:
-            - "${DATA_LOCATION}/app-storage:/opt/learninglocker/storage"
+            - "${PWD}/data/app-storage:/opt/learninglocker/storage"
 
-    nginx:
-        image: up2university/learninglocker2-nginx:${DOCKER_TAG}
+    nginx: 
+        image: rpi4learningbox/learninglocker2-nginx:1.20.0
         container_name: learninglocker_nginx
         environment:
             - DOMAIN_NAME
@@ -113,8 +113,8 @@ services:
             - xapi
         ports:
             - "2443:443"
-            - "280:80"
+            - "280:80"        
 
 networks:
      rpi4learning:
-        external: true
+        external: true    

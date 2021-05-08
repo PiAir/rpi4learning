@@ -17,6 +17,10 @@ RUN wget -O /var/www/moodle-${MOODLE_VERSION}.tar.gz https://github.com/moodle/m
 	chmod +x /etc/apache2/start.sh &&\
 	mkdir -p /var/www/moodledata && chmod 777 /var/www/moodledata && \
 	chown -R www-data:www-data /var/www/moodledata
+	
+	
+# See: https://tracker.moodle.org/browse/MDL-69196
+COPY ./mysqli_native_moodle_database-patched.php /var/www/html/lib/dml/mysqli_native_moodle_database.php
 
 COPY ./config.php /var/www/html/
 

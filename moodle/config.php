@@ -6,18 +6,18 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mariadb';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = getenv('MOODOLE_DB_URL');
-$CFG->dbname    = getenv('MOODOLE_DB_NAME');
-$CFG->dbuser    = getenv('MOODOLE_DB_USER');
-$CFG->dbpass    = getenv('MOODOLE_DB_PASS');
+$CFG->dbhost    = getenv('MOODLE_DB_URL');
+$CFG->dbname    = getenv('MOODLE_DB_NAME');
+$CFG->dbuser    = getenv('MOODLE_DB_USER');
+$CFG->dbpass    = getenv('MOODLE_DB_PASS');
 $CFG->prefix    = 'mdl_';
 $CFG->dboptions = array (
   'dbpersist' => 0,
-  'dbport' => getenv('MOODOLE_DB_PORT'),
+  'dbport' => getenv('MOODLE_DB_PORT'),
   'dbsocket' => '',
 );
 
-// $CFG->wwwroot   = getenv('MOODOLE_URL');;
+//$CFG->wwwroot   = getenv('MOODLE_URL');
 $CFG->wwwroot   = 'http://'.$_SERVER['HTTP_HOST'];
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
