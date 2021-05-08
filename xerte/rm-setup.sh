@@ -1,0 +1,1 @@
+docker exec xerte rm -r /var/www/html/xerteonlinetoolkits/setup

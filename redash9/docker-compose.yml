@@ -4,12 +4,12 @@ x-redash-service: &redash-service
   depends_on:
     - postgres
     - redis
-  env_file: ${REDASH_LOCATION}/.env
+  env_file: ${PWD}/.env
   restart: unless-stopped
   networks:
     - rpi4learning    
   volumes:
-      - ${REDASH_LOCATION}/data:/data    
+      - ${PWD}/data:/data    
 services:
   server:
     <<: *redash-service
@@ -47,9 +47,9 @@ services:
   postgres:
     image: postgres:9.6-alpine
     container_name: redash_progres    
-    env_file: ${REDASH_LOCATION}/.env
+    env_file: ${PWD}/.env
     volumes:
-      - ${REDASH_LOCATION}/postgres-data:/var/lib/postgresql/data
+      - ${PWD}/postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
     networks:
       - rpi4learning 

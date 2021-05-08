@@ -1,0 +1,20 @@
+version: '2'
+services:
+  mariadb:
+    image: mariadb:10.6.0
+    container_name: mariadb
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    networks:
+      - rpi4learning
+    environment:
+      - MYSQL_ROOT_PASSWORD=tbsp4RC9Pk5sRb5nQNXQDffL7nCTAJjr
+    command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-innodb-read-only-compressed"  
+    volumes:
+      - "$PWD/data:/var/lib/mysql"
+      - "$PWD/init:/docker-entrypoint-initdb.d"
+      
+networks:
+     rpi4learning:
+        external: true

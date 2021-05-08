@@ -1,0 +1,20 @@
+version: '2'
+services:
+  xerte:
+    image: rpi4learningbox/xerte:3.9
+    container_name: xerte
+    restart: unless-stopped
+    ports:
+      - "8041:80"
+    networks:
+      - rpi4learning
+    volumes:
+      - "$PWD/database.php:/var/www/html/xerteonlinetoolkits/database.php"
+      - "$PWD/tsugi/config.php:/var/www/html/xerteonlinetoolkits/tsugi/config.php"
+      - "$PWD/php.ini:/usr/local/etc/php/php.ini"
+      - "$PWD/USER-FILES:/var/www/html/xerteonlinetoolkits/USER-FILES"
+      - "$PWD/demo/xAPI_Demo_Course_deployment.zip:/var/www/html/demo/xAPI_Demo_Course_deployment.zip"
+        
+networks:
+     rpi4learning:
+        external: true

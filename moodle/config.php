@@ -17,8 +17,10 @@ $CFG->dboptions = array (
   'dbsocket' => '',
 );
 
-//$CFG->wwwroot   = getenv('MOODLE_URL');
-$CFG->wwwroot   = 'http://'.$_SERVER['HTTP_HOST'];
+// $CFG->reverseproxy = true;
+$CFG->sslproxy = true;
+$CFG->wwwroot   = 'https://'.getenv('MOODLE_URL');
+// $CFG->wwwroot   = 'https://'.$_SERVER['HTTP_HOST'];
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 

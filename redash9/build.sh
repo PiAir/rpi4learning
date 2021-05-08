@@ -5,3 +5,5 @@ mv redash-9.0.0-beta app
 
 docker build -t rpi4learningbox/redash:9.0.0-beta.b42121 app
 docker build -t rpi4learningbox/redash-nginx:1.20.0 nginx
+
+rm -r app

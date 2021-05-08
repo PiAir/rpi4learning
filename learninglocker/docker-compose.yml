@@ -20,7 +20,7 @@ services:
           - rpi4learning  
 
     xapi:
-        image: learninglocker/xapi-service:4.0.1
+        image: rpi4learningbox/learninglocker2-xapi-service:4.0.1
         container_name: learninglocker_xapi
         restart: unless-stopped
         networks:
@@ -33,7 +33,7 @@ services:
             - mongo
             - redis          
         volumes:
-            - "${PWD}/data/xapi-storage:/usr/src/app/storage"
+            - "${PWD}/data/xapi-storage:/usr/src/app/xapi-service/storage"
 
     api:  
         image: rpi4learningbox/learninglocker2-app:${LL_VERSION}
