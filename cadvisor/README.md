@@ -33,5 +33,5 @@ cAdvisor on github: https://github.com/google/cadvisor
 
 cAdvisor for Docker by Budry on github: https://github.com/Budry/cadvisor-arm
 
-Note: on the RPI4 Debian image, the memory use is not shown. There should be a work-around, just haven't tested it yet.
+Note: on the RPI4 Debian image, the memory use is not shown. There should be [a work-around](https://jackgruber.github.io/2020-08-15-Docker-monitoring-with-Grafana/), just haven't tested it yet.
 
