@@ -100,7 +100,10 @@ Now it is time to run the production version of the Xerte container and finish t
 ```
 $ docker-compose up -d
 ```
-This script will also remove the setup-files from the installation, adding a bit more security.
+This script will remove the Xerte setup-files from the installation, adding a bit more security:
+```
+$ ./rm-setup.sh
+```
 
 ## Setup - step 3 Setup Tsugi
 
