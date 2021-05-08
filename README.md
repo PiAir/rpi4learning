@@ -88,6 +88,7 @@ $ unzip *.zip
 $ mv rpi4learning-0.2/* ./
 $ rm *.zip
 $ rm -r rpi4learning-0.2/
+$ rm -rf .keep
 $ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
 The last command makes sure that all the run-docker.sh and build.sh files in the repository have the correct execute rights.
