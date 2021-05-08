@@ -108,4 +108,4 @@ Follow the steps desribed in the README files in the folders in this order:
 - [Xerte](xerte/README.md)
 - [Learning Locker](learninglocker/README.md)
 - [Moodle](moodle/README.md)
-- Redash
+- [Redash](redash9/README.md)
