@@ -112,4 +112,4 @@ Follow the steps desribed in the README files in the folders in this order:
 - [Redash](redash9/README.md)
 
 
-[The final result in Portainer](https://raw.githubusercontent.com/PiAir/rpi4learning/main/resources/images/Containerlist_Rpi4.png)
+![The final result in Portainer](https://raw.githubusercontent.com/PiAir/rpi4learning/main/resources/images/Containerlist_Rpi4.png)
