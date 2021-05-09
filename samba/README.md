@@ -3,30 +3,26 @@
 Another non essential container. This one enables you to view the filesystem within the docker folder. Easy when you want to move files to and from the Raspberry Pi4.
 
 ## Setup
-The download from the repository comes with a single user + password setup:
-- User:  rpisamba
-- Password: Hmk7hsrW9Q8W5hYr
-If you want to change them, you have to edit the run-docker.sh file.
+## Change the configuration
+The duckdns container uses .env to set the DuckDNS domain name and token. I can't share mine with all of you, so because of that, the repository contains a sample.env file with dummy data that you have to replace with your own data. Rename the sample file and edit it.
 ```
-$ nano run-docker.sh
+$ mv sample.env .env
+$ nano .env
 ```
-Change the values for the "-u" parameter.
-```
-Press CTRL+X and Y to save the changes
-```
-If you want to change the username, you will have to change both occurences!
+- Replace [set-a-password] with a strong password.
+- Save the changes.
 
 ## Running the container
-Starting the container is really simple, just run the shell-script
+Start the container using docker-compose:
 
 ```
-$ ./run-docker.sh
+$ docker-compose up -d
 ```
 The script tells the container to listen to port 445 which is the default. 
 
 Go to file explorer on you computer and open \\[your-rpi4-ip]
 
-You will be prompted for the Username and Password that you've set previously.
+You will be prompted for the username and password set in the .env file
 
 
 ## More info
