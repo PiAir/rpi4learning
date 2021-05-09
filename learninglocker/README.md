@@ -15,9 +15,9 @@ Because of that, the repository contains a sample.env file with dummy data that 
 $ mv sample.env .env
 $ nano .env
 ```
-- Replace [your-rpi4-ip] with the ip of your Raspberry Pi
-- Replace yourmail@gmail.com with your gmail address
-- Replace BR8UnPH4UMEzq4qP with your gmail app-password - [see how to create one](https://support.google.com/accounts/answer/185833)
+- Replace [your-domain].duckdns.org with the DuckDNS domain you created
+- Replace [yourmail]@gmail.com with your gmail address
+- Replace [your-smtp-password] with your gmail app-password - [see how to create one](https://support.google.com/accounts/answer/185833)
 - Save the changes.
 
 Before you start building, check the versions used by the scripts.
