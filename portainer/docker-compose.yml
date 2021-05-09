@@ -1,0 +1,19 @@
+version: '2'
+services:
+  portainer:
+    image: portainer/portainer-ce:2.1.1-alpine
+    container_name: portainer  
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"      
+      - "${PWD}/portainer_data:/data"        
+    networks:
+      - rpi4learning
+        
+networks:
+     rpi4learning:
+        external: true
+        
+      

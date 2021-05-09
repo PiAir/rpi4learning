@@ -1,0 +1,18 @@
+version: '2'
+services:
+  phpmyadmin:
+    image: phpmyadmin:5.1.0
+    container_name: phpmyadmin  
+    restart: unless-stopped
+    environment:
+      - "PMA_HOST=mariadb"
+    ports:
+      - "8080:80"
+    networks:
+      - rpi4learning
+        
+networks:
+     rpi4learning:
+        external: true
+        
+      

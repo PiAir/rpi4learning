@@ -9,7 +9,7 @@ services:
     networks:
       - rpi4learning
     environment:
-      - MYSQL_ROOT_PASSWORD=tbsp4RC9Pk5sRb5nQNXQDffL7nCTAJjr
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-innodb-read-only-compressed"  
     volumes:
       - "$PWD/data:/var/lib/mysql"

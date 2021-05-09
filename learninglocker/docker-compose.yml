@@ -113,7 +113,10 @@ services:
             - xapi
         ports:
             - "2443:443"
-            - "280:80"        
+            - "280:80"       
+        volumes:
+            - "${PWD}/data/cert/live/${DUCKDNS_DOMAIN}/fullchain.pem:/root/ssl/fullchain.pem:ro"
+            - "${PWD}/data/cert/live/${DUCKDNS_DOMAIN}/privkey.pem:/root/ssl/privkey.pem:ro"            
 
 networks:
      rpi4learning:
