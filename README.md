@@ -107,6 +107,7 @@ Follow the steps desribed in the README files in the folders in this order:
 - [samba](samba/README.md) (optional)
 - [MariaDB](mariadb/README.md)
 - [Xerte](xerte/README.md)
+- [Duckdns](duckdns/README.md)
 - [Learning Locker](learninglocker/README.md)
 - [Moodle](moodle/README.md)
 - [Redash](redash9/README.md)
