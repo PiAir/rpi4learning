@@ -20,11 +20,12 @@ GRANT ALL PRIVILEGES ON `moodle-db`.* TO 'moodle'@'%' WITH GRANT OPTION;
 The statements create 2 databases (xerte-db and moodle-db) and 2 users (xerte and moodle).
 Take a note of the "IDENTIFIED BY" parts. These contain the passwords for those users. You can replace them with your own strong password, but you'll have to note them down for when you're installing Xerte and/or Moodle.
 
-In the docker-compose.yml file you'll find:
+The folder also contains a sample.env file with dummy data that you have to replace with your own data. Rename the sample file and edit it.
 ```
-MYSQL_ROOT_PASSWORD=tbsp4RC9Pk5sRb5nQNXQDffL7nCTAJjr
+$ mv sample.env .env
+$ nano .env
 ```
-As you might expect, this is the password for the "root" user. Again, you're free to change it.
+Replace [your-mysql-root-password] with a strong root-password for MariaDB.
 
 ## Running the container
 Starting the container is done by using
@@ -37,7 +38,7 @@ The container does not have a web interface. But if you've installed phpMyAdmin,
 ```
 Open http://[your-rpi4-ip]:**8081** in the browser.
 User: root
-Password: the password from docker-compose.yml 
+Password: the root password from .env 
 ```
 
 ## More info
