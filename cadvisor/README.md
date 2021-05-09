@@ -15,12 +15,12 @@ $ ./build.sh
 ```
 
 ## Running the container
-Starting the container is simple, just run the shell-script
+Starting the container is simple, just use docker-compose:
 
 ```
-$ ./run-docker.sh
+$ docker-compose up -d
 ```
-The script tells the container to listen to port 8081. 
+The docker-compose file tells the container to listen to port 8081. 
 
 Open http://[your-rpi4-ip]:**8081** in the browser. 
 
