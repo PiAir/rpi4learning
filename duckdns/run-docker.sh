@@ -1,0 +1,1 @@
+docker run --name duckdns -d -e DUCKDNS_TOKEN=2591154e-f734-4151-b862-0afe65f3b65b -e DUCKDNS_DOMAIN=rpi4learning.duckdns.org -v /home/pi/docker/learninglocker/data/cert:/etc/letsencrypt --restart=unless-stopped --network=rpi4learning maksimstojkovic/letsencrypt:21.05
