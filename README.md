@@ -85,9 +85,9 @@ $ mkdir docker
 $ cd docker
 $ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.1.zip
 $ unzip *.zip
-$ mv rpi4learning-0.1/* ./
+$ mv rpi4learning-0.1.2/* ./
 $ rm *.zip
-$ rm -r rpi4learning-0.1/
+$ rm -r rpi4learning-0.1.2/
 $ rm -rf .keep
 $ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
