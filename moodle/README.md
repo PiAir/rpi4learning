@@ -17,23 +17,13 @@ $ ./build.sh
 ```
 And go get a cup of tea.
 
-When building the rpi4learningbox/moodle:latest has completed we first need to check the docker-compose.yml for all the needed environment values.
+The folder also contains a sample.env file with dummy data that you have to replace with your own data. Rename the sample file and edit it.
 ```
-$ nano docker-compose.yml
+$ mv sample.env .env
+$ nano .env
 ```
-Some you can probably leave unchanged, others (like the ip for your Raspberry Pi4 device) will need changing:
-```
-    - MOODLE_URL=**[your-Rpi4-ip]**
-    - MOODLE_DB_URL=mariadb
-    - MOODLE_DB_NAME=moodle-db
-    - MOODLE_DB_USER=moodle
-    - MOODLE_DB_PASS=YVNex3CHq4yc2DzHYVNex3CHq4yc2DzH
-    - MOODLE_DB_PORT=3306
-    - MOODLE_MAX_BODY_SIZE=200M
-    - MOODLE_BODY_TIMEOUT=300s
-    - MOODLE_UPLOAD_MAX_FILESIZE=200M  
-```
-If you changed the password vfor the Moodle user during the MariaDB setup, change it here also!
+- Replace [your-rpi4-ip] with the ip-address of your Raspberry Pi
+- Replace [your-moodle-db-password-from-MariaDB-setup] with the password that you set for the moodle database user during creation of the MariaDB container.
 
 ## Setup - step 2 Run Moodle
 
