@@ -1,1 +1,0 @@
-docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --volume=/dev/disk/:/dev/disk:ro --restart=unless-stopped --publish=8081:8080 --detach=true --network=rpi4learning --name=cadvisor rpi4learningbox/cadvisor:0.37.5
