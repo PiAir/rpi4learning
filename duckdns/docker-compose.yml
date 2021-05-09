@@ -1,0 +1,17 @@
+version: '2'
+services:
+  xerte:
+    image: maksimstojkovic/letsencrypt:21.05
+    container_name: duckdns
+    environment:
+      - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
+      - DUCKDNS_DOMAIN=${DUCKDNS_DOMAIN}      
+    restart: unless-stopped
+    networks:
+      - rpi4learning
+    volumes:
+      - "/home/pi/docker/learninglocker/data/cert:/etc/letsencrypt"
+        
+networks:
+     rpi4learning:
+        external: true
