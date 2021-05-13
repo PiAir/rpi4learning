@@ -11,7 +11,13 @@ services:
     env_file: ${PWD}/.env
     volumes:
       - "${PWD}/config.php:/var/www/html/config.php"
-        
+      - "${PWD}/php.ini:/usr/local/etc/php/php.ini"
+      - "${PWD}/mod/hvp:/var/www/html/mod/hvp"
+      - "${PWD}/mod/trax:/var/www/html/admin/tool/log/store/trax"
+      - "${PWD}/xapi-h5p/view.php:/var/www/html/mod/hvp/view.php"
+      - "${PWD}/xapi-h5p/js/xapi-stmt-dispatcher.js:/var/www/html/mod/hvp/js/xapi-stmt-dispatcher.js"
+      - "${PWD}/xapi-h5p/js/xapiwrapper.min.js:/var/www/html/mod/hvp/js/xapiwrapper.min.js"      
+      - "${PWD}/xapi-h5p/js/xapiwrapper.min.js.map:/var/www/html/mod/hvp/js/xapiwrapper.min.js.map"             
 networks:
      rpi4learning:
         external: true

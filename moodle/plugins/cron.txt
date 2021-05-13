@@ -1,0 +1,10 @@
+php /var/www/html/admin/cli/scheduled_task.php --execute=schedule\\core\\task\\h5p_get_content_types_task
+
+https://docs.moodle.org/310/en/Cron
+
+https://github.com/willfarrell/docker-crontab
+
+
+php /var/www/html/admin/cli/scheduled_task.php --execute=mod_hvp\\task\\look_for_updates
+
+php /var/www/html/admin/cli/scheduled_task.php --execute=core\\task\\h5p_get_content_types_task

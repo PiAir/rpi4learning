@@ -4,6 +4,8 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
+$CFG->mod_hvp_aggregate_assets = 0;
+
 $CFG->dbtype    = 'mariadb';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = getenv('MOODLE_DB_URL');
@@ -17,10 +19,17 @@ $CFG->dboptions = array (
   'dbsocket' => '',
 );
 
-// $CFG->reverseproxy = true;
-$CFG->sslproxy = true;
-$CFG->wwwroot   = 'https://'.getenv('MOODLE_URL');
-// $CFG->wwwroot   = 'https://'.$_SERVER['HTTP_HOST'];
+
+
+// use with reverse proxy:
+// $CFG->sslproxy = true;
+// $CFG->wwwroot   = 'https://'.getenv('MOODLE_URL');
+// use without reverse proxy or ssl:
+if (isset($_SERVER['HTTP_HOST'])) {
+    $CFG->wwwroot   = 'http://'.$_SERVER['HTTP_HOST'];
+} else {
+    $CFG->wwwroot   = 'http://'.getenv('MOODLE_URL');
+}
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 

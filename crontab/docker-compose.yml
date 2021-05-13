@@ -1,0 +1,26 @@
+version: "2.1"
+
+services:
+  myapp:
+    image: debian:9
+    container_name: crontab_app
+    networks:
+      - rpi4learning      
+    restart: always
+    command: "sh -c 'while :; do sleep 1; done'"
+
+  crontab:
+    build: .
+    container_name: crontab_crontab
+    networks:
+      - rpi4learning      
+    restart: always
+    volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+     - "${PWD}/.env:/opt/env:rw"     
+     - "${PWD}/config:/opt/crontab:rw"
+     - "${PWD}/logs:/var/log/crontab:rw"     
+     
+networks:
+     rpi4learning:
+        external: true       
