@@ -83,11 +83,11 @@ Note: Make sure you get [the latest version](https://github.com/PiAir/rpi4learni
 ```
 $ mkdir docker
 $ cd docker
-$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.1.zip
+$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v2.1.zip
 $ unzip *.zip
-$ mv rpi4learning-0.1.2/* ./
+$ mv rpi4learning-0.2.1/* ./
 $ rm *.zip
-$ rm -r rpi4learning-0.1.2/
+$ rm -r rpi4learning-0.2.1/
 $ rm -rf .keep
 $ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
@@ -110,6 +110,7 @@ Follow the steps desribed in the README files in the folders in this order:
 - [Duckdns](duckdns/README.md)
 - [Learning Locker](learninglocker/README.md)
 - [Moodle](moodle/README.md)
+- [Crontab](crontab/README.md)
 - [Redash](redash9/README.md)
 
 
