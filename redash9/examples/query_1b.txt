@@ -11,7 +11,7 @@
 			"$exists": true
 		}
 	}
-},
+}, 
 {
 	"$group": {
 		"_id": {
