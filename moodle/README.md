@@ -11,7 +11,7 @@ If you use this instruction in a couple of months, it is worthwhile checking out
 ```
 ENV MOODLE_VERSION 3.10.3
 ```
-Once you've checked or changed the versions you want to use, start the build process using:
+Once you've checked or changed the versions you want to use in sample.env, build.sh and Dockerfile, start the build process using:
 ```
 $ ./build.sh
 ```
