@@ -3,10 +3,10 @@
 Technically you don't need this container, but it enables you to view the MariaDB database. And setup is super simple.
 
 ## Running the container
-Starting the container is really simple, just run the shell-script
+Starting the container is really simple, just run the docker-compose script
 
 ```
-$ ./run-docker.sh
+$ docker-compose up -d
 ```
 The script tells the container to listen to port 8080. 
 
