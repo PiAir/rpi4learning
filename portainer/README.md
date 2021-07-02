@@ -3,10 +3,10 @@
 This container is really helpful as it enables you to see all other running container, start them, stop them etc.
 
 ## Running the container
-Starting the container is really simple, just run the shell-script
+Starting the container is really simple, just run the docker-compose command
 
 ```
-$ ./run-docker.sh
+$ docker-compose up -d
 ```
 The script tells the container to listen to port 9000. 
 
