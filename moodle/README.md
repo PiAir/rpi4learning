@@ -9,7 +9,7 @@ Like with Xerte, the Moodle code gets updated frequently. Before you run the fir
 If you use this instruction in a couple of months, it is worthwhile checking out the [Moodle github repository](https://github.com/moodle/moodle/releases) to see if there is a new and improved version around.
 
 ```
-ENV MOODLE_VERSION 3.10.3
+ENV MOODLE_VERSION 3.11.0
 ```
 Once you've checked or changed the versions you want to use in sample.env, build.sh and Dockerfile, start the build process using:
 ```
