@@ -10,7 +10,7 @@ Goto: https://downloads.raspberrypi.org/raspios_arm64/images/
 
 Download the ZIP of the most recent version of the 64bit operating system. Currently that is:
 
-https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip
+https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip
 
 Install: https://www.balena.io/etcher/
 
