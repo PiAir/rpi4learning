@@ -6,7 +6,7 @@ You should know the password for the moodle user that was created when you setup
 
 ## Setup - step 1 Build
 Like with Xerte, the Moodle code gets updated frequently. Before you run the first one (build.sh) take a look in Dockerfile at the version number for Moodle that you want to build.
-If you use this instruction in a couple of months, it is worthwhile checking out the Moodle github repository to see if there is a new and improved version around.
+If you use this instruction in a couple of months, it is worthwhile checking out the [Moodle github repository](https://github.com/moodle/moodle/releases) to see if there is a new and improved version around.
 
 ```
 ENV MOODLE_VERSION 3.10.3
