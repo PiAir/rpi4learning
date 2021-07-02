@@ -12,7 +12,7 @@ We will be running 3 shell files to get this container going. Before you run the
 If you use this instruction in a couple of months, it is worthwhile checking out the Xerte and Tsugi github repositories to see if there are new and improved versions around.
 
 ```
-ENV XERTE_VERSION 3.9
+ENV XERTE_VERSION 3.10
 ENV TSUGI_VERSION 21.04.24 
 ```
 Once you've checked or changed the versions you want to use, start the build process using:
