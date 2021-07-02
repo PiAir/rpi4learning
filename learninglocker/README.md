@@ -70,12 +70,21 @@ The password needs to be at least 8 characters and needs to contain at least one
 
 The script tells the container to listen to port 2443. 
 
-Open **https**://[your-rpi4-ip]:**2443** in the browser. You should see the logon page. Use the username and password that you used in the previous set.
+Open **https**://[your-domain].duckdns.org:**2443** in the browser. You should see the logon page. Use the username and password that you used in the previous set.
 
 
-## TODO
+## Create Store and endpoint
 
-_Need more info here on how to setup a store and an endpoint....._
+```
+- Click on Settings in the menu on the left and then on Stores
+- Click the +Add new button
+- Add a title for the new store, e.g. 'RPI4learning Store' - no need to save
+- Click on Clients in the menu on the left
+- Click on the +Add new button
+- Add a title for the new client, e.g. 'RPI4learning default' - no need to save
+- Check the 'API ALL'
+
+```
 
 ## More info
 The original up2university repository: https://github.com/up2university/learninglocker2
