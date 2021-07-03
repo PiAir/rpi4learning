@@ -18,16 +18,17 @@ And go get a cup of tea.
 
 ## Setup - step 2 Create the database
 
-You need to create the database before running Redash:
+The repository contains a sample.env file. In this scenario, you don't have to change anything in it, just rename it to .env.
+```
+$ mv sample.env .env
+```
+You then need to create the database before running Redash:
 ```
 $ ./create-database.sh
 ```
 
 ## Setup - step 3 Run Redash
-The repository contains a sample.env file. In this scenario, you don't have to change anything in it, just rename it to .env.
-```
-$ mv sample.env .env
-```
+
 Now it is time to run Redash using docker-compose:
 ```
 $ docker-compose up -d
