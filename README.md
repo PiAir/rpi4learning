@@ -71,8 +71,8 @@ $ docker run hello-world
 ```
 ### docker compose
 ```
-$ sudo apt-get install libffi-dev libssl-dev
-$ sudo apt install python3-dev
+$ sudo apt-get install -y libffi-dev libssl-dev
+$ sudo apt install -y python3-dev
 $ sudo apt-get install -y python3 python3-pip
 $ sudo pip3 install docker-compose
 
@@ -83,7 +83,7 @@ Note: Make sure you get [the latest version](https://github.com/PiAir/rpi4learni
 ```
 $ mkdir docker
 $ cd docker
-$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v2.1.zip
+$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.2.1.zip
 $ unzip *.zip
 $ mv rpi4learning-0.2.1/* ./
 $ rm *.zip
