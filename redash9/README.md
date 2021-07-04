@@ -5,7 +5,7 @@ So, feel free to not install it. I did include the beta for version 9 as a bonus
 ## Setup - step 1 Build
 We need to build this image for it to work on our Raspberry Pi4, but luckily for you, I did all the hard work.
 
-If you look in build.sh you can see the version that is being installed:
+If you look in build.sh you can see [the version](https://github.com/getredash/redash/tags) that is being installed:
 
 ```
 v9.0.0-beta
