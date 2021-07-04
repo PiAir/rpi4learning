@@ -42,11 +42,15 @@ services:
       WORKERS_COUNT: 2
   redis:
     image: redis:5.0-alpine
-    container_name: redash_redis    
+    container_name: redis    
     restart: always
+    ports:
+      - "3679:3679"    
+    networks:
+      - rpi4learning       
   postgres:
     image: postgres:9.6-alpine
-    container_name: redash_postgres    
+    container_name: postgres    
     env_file: ${PWD}/.env
     volumes:
       - ${PWD}/postgres-data:/var/lib/postgresql/data
