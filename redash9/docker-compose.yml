@@ -46,7 +46,7 @@ services:
     restart: always
   postgres:
     image: postgres:9.6-alpine
-    container_name: redash_progres    
+    container_name: redash_postgres    
     env_file: ${PWD}/.env
     volumes:
       - ${PWD}/postgres-data:/var/lib/postgresql/data
