@@ -5,8 +5,10 @@ Technically you don't need this container, but it enables you to view the resour
 Because we're using 64-bit Debian, I could replace the 'arm32v7/golang' base image with regular 'golang' and 'arm32v7/debian' with 'debian:buster-slim'.
 cAdvisor version used, is set in Dockerfile:
 ```
-ENV CADVISOR_VERSION "v0.37.5"
+ENV CADVISOR_VERSION "v0.40.0"
 ```
+You could look for newer versions of at [their github repository](https://github.com/google/cadvisor/releases).
+
 
 ## Build the container
 Building is easy, but takes some time:
