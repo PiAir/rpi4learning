@@ -1,5 +1,5 @@
 FROM php:7.4-apache
-ENV XERTE_VERSION 3.9
+ENV XERTE_VERSION 3.10
 ENV TSUGI_VERSION 21.04.24
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/xerteonlinetoolkits
