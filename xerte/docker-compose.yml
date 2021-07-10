@@ -1,7 +1,7 @@
 version: '2'
 services:
   xerte:
-    image: rpi4learningbox/xerte:3.9
+    image: rpi4learningbox/xerte:3.10
     container_name: xerte
     restart: unless-stopped
     ports:
