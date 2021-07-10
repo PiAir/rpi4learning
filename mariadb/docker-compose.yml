@@ -1,7 +1,7 @@
 version: '2'
 services:
   mariadb:
-    image: mariadb:10.6.0
+    image: mariadb:10.6.2
     container_name: mariadb
     restart: unless-stopped
     ports:
