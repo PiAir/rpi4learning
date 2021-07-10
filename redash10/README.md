@@ -1,6 +1,15 @@
 # Redash
 Is Redash the best dashboard server for Learning Analytics? No, for sure not. But it was the only open source (for now) one that I could find, that would actually talk to Learning Locker via json.
-So, feel free to not install it. I did include the beta for version 9 as a bonus, but here it is.
+So, feel free to not install it. I did include the beta for version 10 as a bonus.
+
+To get it to run, I had to remove a couple of things from the original build: msodbcsql17 simply has no way of installing on ARM (I tried). Same goes for SimbaSparkODBC.
+So I modified the original Dockerfile and copy that into the source-folder before building it.
+
+Also, I don't compile the development and additional requirements part of the pip installation. Again, I tried, but sometimes (like with pymssql) it just won't work on ARM, othertimes, the developers work some magic with versions that, when building it on ARM, apparently just won't work. And for this goal (connecting to Learning Locker), we don't need it.
+
+So by all means, like with all the other builds that are part of this repository: for production / development needs, specific questions about the tool, please [go to the official site](https://redash.io/)!!
+
+I'm just showing you how I got this version running on a Raspberry Pi4. I am in no way affiliated with Redash (or Databricks).
 
 ## Setup - step 1 Build
 We need to build this image for it to work on our Raspberry Pi4, but luckily for you, I did all the hard work.
@@ -8,7 +17,7 @@ We need to build this image for it to work on our Raspberry Pi4, but luckily for
 If you look in build.sh you can see [the version](https://github.com/getredash/redash/tags) that is being installed:
 
 ```
-v9.0.0-beta
+v10.0.0-beta
 ```
 It is unclear when this beta is going to become the final version, but for now you're good. Start the build process using:
 ```
