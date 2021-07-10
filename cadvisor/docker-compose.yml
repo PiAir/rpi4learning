@@ -1,7 +1,7 @@
 version: '2'
 services:
   cadvisor:
-    image: rpi4learningbox/cadvisor:0.37.5
+    image: rpi4learningbox/cadvisor:0.40.0
     container_name: cadvisor  
     restart: unless-stopped
     ports:
