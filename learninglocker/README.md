@@ -48,6 +48,7 @@ $ ./build.sh
 And go get a cup of tea. The app-building part takes a really long time. Also keep in mind that it puts quite a strain on your RPi4. I stopped all containers except for Portainer and cAdvisor before starting the build. Below you can see the CPU-usage:
 
 ![LL-building-CPU-load](https://raw.githubusercontent.com/PiAir/rpi4learning/main/resources/images/ll_building_CPU.png)
+
 The build uses quite some space, I had been testing a while with different container images and almost filled up the 32GB micro-SD card I was using.
 
 Note: there will be some warnings during the building of the app with regard to incorrect peer dependencies. I don't know how to fix them, but the appear to be related to the application code, not the Docker image creation process itself.
