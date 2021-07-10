@@ -1,7 +1,7 @@
 # Builder
 FROM golang as builder
 
-ENV CADVISOR_VERSION "v0.37.5"
+ENV CADVISOR_VERSION "v0.40.0"
 
 RUN apt-get update && apt-get install -y git dmsetup && apt-get clean
 
