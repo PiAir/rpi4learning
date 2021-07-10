@@ -8,12 +8,12 @@ I choose to include the [tsugi framework](https://www.tsugi.org/) so that we can
 That means a bit more time when creating the image, but also the option to rebuild the image when a new version of Xerte is released.
 I also decided to stick to the regular Xerte setup script. It takes a bit more time, because of its extensive checks, but again, by leaving it as is, the chances of breaking the Docker setup are smaller.
 
-We will be running 3 shell files to get this container going. Before you run the first one (build.sh) take a look in Dockerfile at the version numbers for Xerte and Tsugi that you want to build.
+We will be running 3 shell files to get this container going. Before you run the first one (build.sh) take a look in that file at the version numbers for Xerte and Tsugi that you want to build.
+
 If you use this instruction in a couple of months, it is worthwhile checking out the Xerte and Tsugi github repositories to see if there are new and improved versions around.
 
 ```
-ENV XERTE_VERSION 3.10
-ENV TSUGI_VERSION 21.04.24 
+--build-arg XERTE_VERSION=3.10 --build-arg TSUGI_VERSION=21.04.24
 ```
 Once you've checked or changed the versions you want to use, start the build process using:
 ```
