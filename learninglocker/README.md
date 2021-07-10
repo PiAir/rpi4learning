@@ -27,8 +27,10 @@ In the Dockerfile in the ./app directory you will find a line
 ```
 ENV LL_TAG=7.0.0
 ```
-You can control which version of Learning Locker is installed by changing that tag. At the moment of writing this instruction, that was 7.0.0
+You can control which version of Learning Locker is installed by changing that tag. At the moment of writing this instruction, [that was 7.0.0](https://github.com/LearningLocker/learninglocker/tags).
+
 Despite nodejs version 10.x being rather old, I stuck to that version, reason for that was that the build process caused a lot of trouble. If you get it working with one of the newer versions, please submit a PR.
+
 Version 7.0.0 of Learning Locker requires at least Mongo 4.2. in the docker-compose.yml file you'll find that I use
 ```
 image: mongo:4.4.5
