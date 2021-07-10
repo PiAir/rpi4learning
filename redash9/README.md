@@ -22,17 +22,17 @@ The repository contains a sample.env file. In this scenario, you don't have to c
 ```
 $ mv sample.env .env
 ```
+Now it is time to run Redash using docker-compose:
+```
+$ docker-compose up -d
+```
 You then need to create the database before running Redash:
 ```
 $ ./create-database.sh
 ```
 
-## Setup - step 3 Run Redash
+## Setup - step 3 Setup Redash
 
-Now it is time to run Redash using docker-compose:
-```
-$ docker-compose up -d
-```
 Open a webbrowser and goto http://[your-rpi4-ip]:8090
 
 The first time you will have to create a user:
