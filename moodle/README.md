@@ -25,14 +25,21 @@ $ nano .env
 - Replace [your-rpi4-ip] with the ip-address of your Raspberry Pi
 - Replace [your-moodle-db-password-from-MariaDB-setup] with the password that you set for the moodle database user during creation of the MariaDB container.
 
-## Setup - step 2 Run Moodle
+## Setup - step 2 Download plugins
+
+We'll install 2 plugins befor running the Moodle setup. They'll be downloaded from github and placed in the correct folder:
+```
+$ ./get-plugins.sh
+```
+
+## Setup - step 3 Run Moodle
 
 Now it is time to run Moodle using docker-compose:
 ```
 $ docker-compose up -d
 ```
 
-## Setup - step 3 Setup Moodle
+## Setup - step 4 Setup Moodle
 
 ```
 Open a webbrowser and goto http://[your-rpi4-ip]:81
