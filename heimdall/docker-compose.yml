@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  heimdall:
+    image: linuxserver/heimdall:version-2.2.2
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Amsterdam
+    volumes:
+      - $PWD/config:/config
+    ports:
+      - 82:80
+      - 444:443
+    networks:
+      - rpi4learning      
+    restart: unless-stopped
+    
+networks:
+     rpi4learning:
+        external: true
