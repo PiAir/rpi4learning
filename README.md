@@ -16,11 +16,13 @@ Install: https://www.balena.io/etcher/
 
 Write the ZIP image to a micro-SD card. Make sure it is large enough, 32GB preferably.
 
-Add ssh file to boot partition (we are going to use wired internet!)
+Add an empty ssh file (= a file named 'ssh' with nothing in it) to the boot partition to enable ssh on the Pi (we are going to use wired internet!)
 
 Boot up and wait...
 
 Use your router to find the ip-address and note it down
+
+** Note: I'll be using an external SSD connected to one of the USB3 ports of the Raspberry Pi. 
 
 ## Setup Raspberry Pi
 
@@ -49,40 +51,14 @@ Change Timezone to Amsterdam (if applicable)
 ```
 Localisation Options > Timezone > Europe > Amsterdam
 ```
+Expand the filesystem to full size:
+```
+Advanced Options > Expand Filesystem > Ok
+```
+Exit using Finish and reboot. Reconnect to the Pi
 
-Exit and reboot. Reconnect to the Pi
-
-## Install Docker and Docker-compose
-
-These instructions were adapted from the info on:
-
-https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
-
-### docker
-```
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh
-$ sudo usermod -aG docker pi
-```
-logout and login again as user pi. Test if docker is running properly:
-```
-$ docker --version
-$ docker run hello-world
-```
-### docker compose
-```
-$ sudo apt-get install -y libffi-dev libssl-dev
-$ sudo apt install -y python3-dev
-$ sudo apt-get install -y python3 python3-pip
-$ sudo pip3 install docker-compose
-```
-The last command takes some time to complete.
-When you're back at the command prompt again, type:
-```
-$ docker-compose --version
-```
-### get the repository files
-Note: Make sure you get [the latest version](https://github.com/PiAir/rpi4learning/releases) of the repository!
+## Get the repository files
+Note: Make sure you get [the latest version](https://github.com/PiAir/rpi4learning/releases) of the repository. Check the version number there and adapt it down here in the instructions:
 ```
 $ mkdir docker
 $ cd docker
@@ -96,7 +72,32 @@ $ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
 The last command makes sure that all the run-docker.sh and build.sh files in the repository have the correct execute rights.
 
-### docker - create the rpi4learning network
+
+## Install Docker and Docker-compose
+
+I used the info [available here](https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi) to create a build-script build.sh that is available in the docker folder if you've donwloaded the repository files. So all you have to do is run the script in that folder and wait:
+
+```
+$ ./build.sh
+```
+The script adds the pi useraccount to the docker group so you don't have to use sudo to run docker of docker-compose.
+You'll have to logout and login again for it to work.
+Then test if docker is running properly:
+```
+$ docker --version
+$ docker run hello-world
+```
+Now test if docker-compose is working properly:
+```
+$ docker-compose --version
+```
+### how long does it take to build?
+This is an optional tip if you want to know how long a command took to complete. Don't use it on the docker-compose commands in the instructions, but if you want to get a report afterwards how long for instance the installation of docker and docker-compose took, then replace the default build.sh command with:
+```
+$ time ./build.sh --takeyourtime
+```
+
+## Docker - create the rpi4learning network
 All containers share this bridge network. Create it first from the command-line:
 ```
 $ docker network create -d bridge rpi4learning
