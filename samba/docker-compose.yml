@@ -1,14 +1,14 @@
 version: '2'
 services:
   samba:
-    image: trnape/rpi-samba
+    image: elswork/samba:3.2.2
     container_name: samba
     restart: unless-stopped
     ports:
       - "445:445"
     networks:
       - rpi4learning
-    command: "-u '${SAMBA_USER}:${SAMBA_PASSWORD}' -s 'docker:/share/data:rw:${SAMBA_USER}'"  
+    command: "-u '1000:1000:${SAMBA_USER}:${SAMBA_USER}:${SAMBA_PASSWORD}' -s 'docker:/share/data:rw:${SAMBA_USER}'"  
     volumes:
       - "/home/pi/docker:/share/data"
       
