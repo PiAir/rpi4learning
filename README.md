@@ -62,11 +62,11 @@ Note: Make sure you get [the latest version](https://github.com/PiAir/rpi4learni
 ```
 $ mkdir docker
 $ cd docker
-$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.4.zip
+$ wget https://github.com/PiAir/rpi4learning/archive/refs/tags/v0.4.1.zip
 $ unzip *.zip
-$ mv rpi4learning-0.4/* ./
+$ mv rpi4learning-0.4.1/* ./
 $ rm *.zip
-$ rm -r rpi4learning-0.4/
+$ rm -r rpi4learning-0.4.1/
 $ rm -rf .keep
 $ find ~/docker -type f -iname "*.sh" -exec chmod +x {} \;
 ```
