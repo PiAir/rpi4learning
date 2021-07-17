@@ -2,6 +2,12 @@
 
 This container is really helpful as it enables you to see all other running container, start them, stop them etc.
 
+## .env
+The folder contains a sample.env file with the PWD variable. You shouldn't need to change it, just rename it to .env.
+```
+$ mv sample.env .env
+```
+
 ## Running the container
 Starting the container is really simple, just run the docker-compose command
 
