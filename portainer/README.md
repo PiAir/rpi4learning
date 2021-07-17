@@ -22,6 +22,6 @@ Next time you can simply logon and see the containers that you've added in the o
 
 ## More info
 
-Portainer on Dockerhub: https://hub.docker.com/r/portainer/portainer
+Portainer on Dockerhub: https://hub.docker.com/r/portainer/portainer-ce - check for possible new versions and update docker-compose.yml
 
 More info: https://documentation.portainer.io/quickstart/
