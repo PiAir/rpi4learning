@@ -29,6 +29,4 @@ You will be prompted for the username and password set in the .env file
 
 ## More info
 
-Rpi-Samba on Dockerhub: https://hub.docker.com/r/trnape/rpi-samba/
-
-Note: you get a warning about a platform mismatch (linux/arm versus linux/arm64/v8). You can ignore that, the image works fine.
+Elswork Samba on Dockerhub: https://hub.docker.com/r/elswork/samba
