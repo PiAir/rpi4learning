@@ -1,7 +1,7 @@
 version: '2'
 services:
   phpmyadmin:
-    image: phpmyadmin:5.1.0
+    image: phpmyadmin:5.1.1
     container_name: phpmyadmin  
     restart: unless-stopped
     environment:
