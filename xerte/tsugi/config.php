@@ -26,7 +26,7 @@ require_once $dirroot."/vendor/tsugi/lib/include/pre_config.php";
 $loader = require_once($dirroot."/vendor/autoload.php");
 
 // If we just are using Tsugi but not part of another site
-$apphome = "http://192.168.0.72:8041";
+$apphome = "http://[your-rpi4-ip]:8041";
 // $apphome = "https://www.tsugicloud.org";
 // $apphome = "http://localhost:8888/tsugi-org";
 
