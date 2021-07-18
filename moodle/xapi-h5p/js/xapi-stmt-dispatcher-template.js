@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	ADL.XAPIWrapper.changeConfig({
-		'endpoint': 'https://rpi4learning.duckdns.org:2443/data/xAPI',
+		'endpoint': 'https://{LRS_URL}:2443/data/xAPI',
 		"auth" : "Basic " + toBase64('{LRS_USERNAME_PASSWORD}')
 	});
 	H5P.externalDispatcher.on('xAPI', function(event) {
