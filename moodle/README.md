@@ -34,6 +34,10 @@ We'll install 2 plugins befor running the Moodle setup. They'll be downloaded fr
 ```
 $ ./get-plugins.sh
 ```
+We need to add the Learning Locker info to the H5P setup. Run:
+```
+$ ./set_h5p.sh
+```
 
 ## Setup - step 3 Run Moodle
 
@@ -66,12 +70,6 @@ The first time you will be redirected to /admin/index.php
     - No-reply address: noreply@gmail.com
 - Click Save Changes - wait
    
-```
-## Setup - step 5 link H5P to Learning Locker
-
-We need to add the Learning Locker info to the H5P setup. Run:
-```
-$ ./set_h5p.sh
 ```
 
 Done, for now.
