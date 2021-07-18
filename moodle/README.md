@@ -24,6 +24,9 @@ $ nano .env
 ```
 - Replace [your-rpi4-ip] with the ip-address of your Raspberry Pi
 - Replace [your-moodle-db-password-from-MariaDB-setup] with the password that you set for the moodle database user during creation of the MariaDB container.
+- Replace [your-domain].duckdns.org with the url for your Learning Locker install
+- Replace [your-lrs-client-Key] with the client key for your learning locker endpoint.
+- Replace [your-lrs-client-secret] with the secret for your learning locker endpoint
 
 ## Setup - step 2 Download plugins
 
@@ -64,6 +67,13 @@ The first time you will be redirected to /admin/index.php
 - Click Save Changes - wait
    
 ```
+## Setup - step 5 link H5P to Learning Locker
+
+We need to add the Learning Locker info to the H5P setup. Run:
+```
+$ ./set_h5p.sh
+```
+
 Done, for now.
 
 _Needs info about using LTI to add Xerte content_
