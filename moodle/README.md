@@ -117,10 +117,24 @@ By default, Trax logs is not enabled, so we need to enable it:
 ```
 
 ## Add LTI content
+We can also add the Xerte Module as an External Tool and add it via LTI. Xerte will then take care of the xAPI communication with Learning Locker.
 
-We can also add the Xerte Module as an External Tool and add it via LTI. Xerte will then take care of the xAPI communication with 
+```
+- Choose Add an activity or resource > External tool
+- Enter an Activity name, choose whatever you like
+- Click on the "Show more..." link below the Activity Name
+    - set Launch container to "Embed, without blocks so the Xerte Module is shown within the existing Course
+    - for Consumer Key add the LTI key for this Xerte Module
+    - for Shared secret add the LTI secret for thei Xerte Module
+    - for Tool URL (*not* Secure Tool URL) enter the launch url that Xerte provided, e.g. http://192.168.0.172:8041/lti_launch.php?template_id=1
+ - Click Save and display
+ 
+```
 
-_admin/cli/cron.php should run every minute...need cron container!_
+
+## admin/cli/cron.php should run every minute
+Moodle will complain when admin/cli/cron.php hasn't run every minute. We won't fix that in this container but we'll add a specialised crontab container for that.
+See [these instructions for that](https://github.com/PiAir/rpi4learning/blob/main/crontab/README.md)
 
 
 ## More info
