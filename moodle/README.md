@@ -109,6 +109,14 @@ Setup H5P:
 ```
 It takes a while before all interactivity types are available. By trial-and-error I figured out that uploading an example in the Content Bank helps.
 
+## Enable Trax logs
+By default, Trax logs is not enabled, so we need to enable it:
+```
+- Goto Site administration > Plugins > Logging > Manage log stores
+- Activate Trax Logs by clicking on the eye below the "Enable" colomn
+```
+
+## Add LTI content
 
 We can also add the Xerte Module as an External Tool and add it via LTI. Xerte will then take care of the xAPI communication with 
 
