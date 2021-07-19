@@ -1,8 +1,9 @@
-wget https://moodle.org/plugins/download.php/24030/mod_hvp_moodle310_2021043000.zip
+wget --inet4-only https://moodle.org/plugins/download.php/24438/mod_hvp_moodle311_2021061100.zip
 unzip *.zip
-mv hvp mod/hvp
+sudo mv hvp mod/hvp
 rm *.zip
-wget https://github.com/trax-project/moodle-trax-logs/archive/refs/tags/v0.20.zip
+wget --inet4-only https://github.com/trax-project/moodle-trax-logs/archive/refs/tags/v0.20.zip
 unzip *.zip
-mv moodle-trax-logs-0.20 mod/trax
+sudo mv moodle-trax-logs-0.20 mod/trax
 rm *.zip
+sudo chown -R www-data:www-data mod
