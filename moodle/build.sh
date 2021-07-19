@@ -1,1 +1,1 @@
-docker build -t rpi4learningbox/moodle:3.10.4 .
+docker build -t rpi4learningbox/moodle:3.11.1 .
