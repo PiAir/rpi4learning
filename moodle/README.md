@@ -28,25 +28,15 @@ $ nano .env
 - Replace [your-lrs-client-Key] with the client key for your learning locker endpoint.
 - Replace [your-lrs-client-secret] with the secret for your learning locker endpoint
 
-## Setup - step 2 Download plugins
 
-We'll install 2 plugins befor running the Moodle setup. They'll be downloaded from github and placed in the correct folder:
-```
-$ ./get-plugins.sh
-```
-We need to add the Learning Locker info to the H5P setup. Run:
-```
-$ ./set_h5p.sh
-```
-
-## Setup - step 3 Run Moodle
+## Setup - step 2 Run Moodle
 
 Now it is time to run Moodle using docker-compose:
 ```
 $ docker-compose up -d
 ```
 
-## Setup - step 4 Setup Moodle
+## Setup - step 3 Setup Moodle
 
 ```
 Open a webbrowser and goto http://[your-rpi4-ip]:81
@@ -71,10 +61,56 @@ The first time you will be redirected to /admin/index.php
 - Click Save Changes - wait
    
 ```
+## Setup - step 3 Download plugins
 
-Done, for now.
+We'll now enable the H5P plugin and connect it to Learning Locker via xAPI. We'll also install the trax plugin that allows you to track all activities in Moodle. They'll be downloaded from github and placed in the correct folder:
+```
+$ ./get-plugins.sh
+```
+We need to add the Learning Locker info to the H5P setup. Run:
+```
+$ ./set_h5p.sh
+```
+## Setup - step 3 Run Moodle with H5P and trax
 
-_Needs info about using LTI to add Xerte content_
+We use a different docker-compose to enable H5P and trax:
+```
+$ docker-compose down
+$ docker-compose -f docker-compose-h5p-trax.yml up -d
+```
+As soon as you return to the Moodle site as an admin, it will want you to confirm the installation of the two plugins. You should just have to press the Continue button to accept the presented choices. Then click on "Upgrade Moodle database now" and Continue again after that.
+
+### New settings - Trax Logs
+We need to setup the connection to Learning Locker for Trax Logs:
+```
+- Enter LRS endpoint:
+    - use https://[LRS_URL]:2443/data/xAPI/ where you replace LRS_URL with the value you used in .env
+- Enter LRS username (Basic HTTP):
+    - use the same value als you used for LRS_USERNAME in .env
+- Enter LRS password (Basic HTTP):
+    - use the same value als you used for LRS_PASSWORD in .env    
+- Enter Platform IRI:
+    - you can use any value here, you could use http://[your-rpi-ip]:81 or something like http://moodleserver.home       
+- Switch Actors identification to Account (username)
+- Disable "Web services anonymization" for now
+```
+Thinking about privcay, GDPR rules etc. is important in a live situation with students. For this setup, just meant to test things, we can relax a bit more.
+
+### New settings - H5P
+Setup H5P:
+```
+- Enable "Save content state"
+- Disable "Contribute usage statistics" unless you don't mind.
+- Set "Allow download" to "Controlled by author, default is off"
+- Set "Embed button" to "Controlled by author, default is off"
+- Uncheck "Copyright button"
+- Uncheck "About H5P button"
+- Enable "Enable LRS dependent content types"
+```
+It takes a while before all interactivity types are available. By trial-and-error I figured out that uploading an example in the Content Bank helps.
+
+
+We can also add the Xerte Module as an External Tool and add it via LTI. Xerte will then take care of the xAPI communication with 
 
 _admin/cli/cron.php should run every minute...need cron container!_
 
