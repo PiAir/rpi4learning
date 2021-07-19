@@ -1,0 +1,23 @@
+version: '2'
+services:
+  moodle:
+    image: rpi4learningbox/moodle:${MOODLE_VERSION}
+    container_name: moodle
+    restart: unless-stopped
+    ports:
+      - "81:80"
+    networks:
+      - rpi4learning
+    env_file: ${PWD}/.env
+    volumes:
+      - "${PWD}/config.php:/var/www/html/config.php"
+      - "${PWD}/php.ini:/usr/local/etc/php/php.ini" 
+      - "${PWD}/mod/hvp:/var/www/html/mod/hvp"      
+      - "${PWD}/xapi-h5p/view.php:/var/www/html/mod/hvp/view.php"
+      - "${PWD}/xapi-h5p/js/xapi-stmt-dispatcher.js:/var/www/html/mod/hvp/js/xapi-stmt-dispatcher.js"
+      - "${PWD}/xapi-h5p/js/xapiwrapper.min.js:/var/www/html/mod/hvp/js/xapiwrapper.min.js"      
+      - "${PWD}/xapi-h5p/js/xapiwrapper.min.js.map:/var/www/html/mod/hvp/js/xapiwrapper.min.js.map"      
+      - "${PWD}/xapi-h5p/js/xapiwrapper.js:/var/www/html/mod/hvp/js/xapiwrapper.js"      
+networks:
+     rpi4learning:
+        external: true
