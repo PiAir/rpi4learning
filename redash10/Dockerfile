@@ -17,20 +17,16 @@ COPY --chown=redash viz-lib /frontend/viz-lib
 ARG code_coverage
 ENV BABEL_ENV=${code_coverage:+test}
 
-RUN if [ "x$skip_frontend_build" = "x" ] ; then npm ci --unsafe-perm; fi
+RUN npm ci --unsafe-perm
 
 COPY --chown=redash client /frontend/client
 COPY --chown=redash webpack.config.js /frontend/
-RUN if [ "x$skip_frontend_build" = "x" ] ; then npm run build; else mkdir -p /frontend/client/dist && touch /frontend/client/dist/multi_org.html && touch /frontend/client/dist/index.html; fi
+
+RUN npm run build
 
 FROM python:3.7-slim
 
 EXPOSE 5000
-
-# Controls whether to install extra dependencies needed for all data sources.
-ENV skip_ds_deps=yes
-# Controls whether to install dev dependencies.
-ENV skip_dev_deps=yes
 
 RUN useradd --create-home redash
 
@@ -57,24 +53,26 @@ RUN apt-get update && \
     freetds-dev \
     libsasl2-dev \
     unzip \
-    libsasl2-modules-gssapi-mit 
-
+    libsasl2-modules-gssapi-mit \
+    # Needed for Shapeley to work
+    libgeos-dev \
+    # Apperently missing
+    python-watchdog \
+    python-setuptools
+    
 WORKDIR /app
 
-# Disalbe PIP Cache and Version Check
+# Disable PIP Cache and Version Check
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV PIP_NO_CACHE_DIR=1
 
-# rollback pip version to avoid legacy resolver problem
-RUN pip install pip==20.2.4;
+# Rollback pip version to avoid legacy resolver problem
+# RUN pip install pip==20.2.4;
 
 COPY requirements_all_ds.txt ./
-RUN if [ "x$skip_ds_deps" = "x" ] ; then pip install -r requirements_all_ds.txt ; else echo "Skipping pip install -r requirements_all_ds.txt" ; fi
+RUN pip install -r requirements_all_ds.txt 
 
-COPY requirements_bundles.txt requirements_dev.txt ./
-RUN if [ "x$skip_dev_deps" = "x" ] ; then pip install -r requirements_dev.txt ; fi
-
-COPY requirements.txt ./
+COPY requirements_bundles.txt requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY . /app
